@@ -1,5 +1,7 @@
 # MySQL Cheatsheet
 
+> Archaic command reference.
+
 ## Create Database
 ``` sql
 CREATE DATABASE foobar;

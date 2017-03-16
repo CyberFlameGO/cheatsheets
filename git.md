@@ -1,5 +1,7 @@
 # Git Cheatsheet
 
+> Git is a powerful tool but confusing.
+
 ## Archive
 
 ``` bash

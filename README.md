@@ -1,7 +1,3 @@
-# Cheatsheets
-
-Quick and dirty (read: effective) administration.
-
 ## Table of Contents
 
 - [Git](git.md)

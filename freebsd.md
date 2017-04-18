@@ -7,6 +7,7 @@
 - [Jails](#jails)
 - [Kernel](#kernel)
 - [Networking](#networking)
+- [pkgng](#pkgng)
 - [Software](#software)
 - [Updates](#updates)
 - [ZFS](#zfs)
@@ -45,6 +46,18 @@ tar -C / -xvzf src.txz
 ### Prevent resolv.conf from Being Overwritten
 ```bash
 chflags schg /etc/resolv.conf
+```
+
+
+## pkgng
+
+### Fix Corrupt SQLite Database
+Fixes "sqlite error while executing INSERT OR ROLLBACK INTO pkg_search".
+```bash
+pkg info -ao > pkglist.txt
+rm /var/db/pkg/local.sqlite
+pkg update -f
+pkg install `cat pkglist.txt`
 ```
 
 

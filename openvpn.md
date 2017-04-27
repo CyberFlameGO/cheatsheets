@@ -43,5 +43,19 @@ cp /usr/local/share/examples/openvpn/sample-config-files/server.conf /usr/local/
 
 ```bash
 cp -r /usr/local/share/easy-rsa /usr/local/etc/openvpn/easy-rsa
-vi /usr/local/etc/openvpn/easy-rsa/vars
+cd /usr/local/etc/openvpn/easy-rsa
+vi vars
+./easyrsa.real init-pki
+./easyrsa.real gen-dh
+./easyrsa.real build-ca
+./easyrsa.real build-server-full server
+```
+
+### Copy the Key Files and Certificates
+
+```bash
+cp /usr/local/etc/openvpn/easy-rsa/pki/dh.pem /usr/local/etc/openvpn/dh2048.pem
+cp /usr/local/etc/openvpn/easy-rsa/pki/ca.crt /usr/local/etc/openvpn
+cp /usr/local/etc/openvpn/easy-rsa/pki/private/server.key /usr/local/etc/openvpn
+cp /usr/local/etc/openvpn/easy-rsa/pki/issued/server.crt /usr/local/etc/openvpn
 ```

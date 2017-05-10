@@ -34,10 +34,9 @@ rm -rf /usr/jails
 
 ## Kernel
 
-### Install Kernel Sources
+### Install Kernel and System Sources
 ```bash
-fetch ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/10.3-RELEASE/src.txz
-tar -C / -xvzf src.txz
+svnlite checkout http://svn.freebsd.org/base/stable/11 /usr/src
 ```
 
 

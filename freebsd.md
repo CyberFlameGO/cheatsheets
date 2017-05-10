@@ -9,6 +9,7 @@
 - [Networking](#networking)
 - [pkgng](#pkgng)
 - [Software](#software)
+- [SSH](#ssh)
 - [Updates](#updates)
 - [ZFS](#zfs)
 
@@ -66,6 +67,14 @@ pkg install `cat pkglist.txt`
 ```bash
 pkg install python && \
 python -m ensurepip
+```
+
+
+## SSH
+
+### Create secure SSH key
+```bash
+ssh-keygen -o -a 100 -t ed25519
 ```
 
 

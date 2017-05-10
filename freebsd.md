@@ -7,6 +7,7 @@
 - [Jails](#jails)
 - [Kernel](#kernel)
 - [Networking](#networking)
+- [Permissions](#permissions)
 - [pkgng](#pkgng)
 - [Software](#software)
 - [SSH](#ssh)
@@ -46,6 +47,18 @@ svnlite checkout http://svn.freebsd.org/base/stable/11 /usr/src
 ### Prevent resolv.conf from Being Overwritten
 ```bash
 chflags schg /etc/resolv.conf
+```
+
+
+## Permissions
+
+### Make file undeleteable, even by root
+```bash
+## Enable
+chflags schg /path/to/file
+
+## Disable
+chflags noschg /path/to/file
 ```
 
 

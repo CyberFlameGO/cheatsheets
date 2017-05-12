@@ -5,9 +5,7 @@ The official binary packages for ARMv6 platforms (Raspberry Pi 1/2, etc.) are ve
 ## Install
 
 ```sh
-pkg install subversion
-pkg install qemu-user-static
-pkg install ccache
+pkg install subversion qemu-user-static ccache
 ```
 
 ## Configure Poudriere

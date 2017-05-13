@@ -2,6 +2,29 @@
 
 The official binary packages for ARMv6 platforms (Raspberry Pi 1/2, etc.) are very much out of date. Here's how to supply your machines with fresh packages, configured to your needs.
 
+## The Quick and Dirty Way
+
+You are welcome to skip setting it up yourself and use my own public repository in addition to the official ones. Keep in mind that the binary packages are not signed or fingerprinted and you cannot know exactly what code was compiled. **Obviously, using untrusted sources is not a good idea**, even if I promise that the packages are clean and compiled straight from the official ports tree with mostly default options. However, if you're just tinkering with an isolated machine and not builing a production system off of them, you should be fine. I use them for my Raspberry Pi modules.
+
+Proceed at your own risk, you have been warned.
+
+```sh
+mkdir -p /usr/local/etc/pkg/repos/
+```
+
+`/usr/local/etc/pkg/repos/herrbischoff.conf`:
+
+```
+herrbischoff: {
+    url: "http://pkg.esspr.net/repo/11armv6-default",
+    enabled: yes,
+}
+```
+
+```sh
+pkg update -f
+```
+
 ## Install
 
 ```sh

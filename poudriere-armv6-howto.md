@@ -25,13 +25,15 @@ herrbischoff: {
 pkg update -f
 ```
 
-## Install
+## The Long Way
+
+### Install
 
 ```sh
 pkg install subversion qemu-user-static ccache poudriere
 ```
 
-## Configure Poudriere
+### Configure Poudriere
 
 Change in `/usr/local/etc/poudriere.conf`:
 
@@ -48,7 +50,7 @@ BUILDER_HOSTNAME=build
 WRKDIR_ARCHIVE_FORMAT=txz
 ```
 
-## Configure QEMU
+### Configure QEMU
 
 ```sh
 binmiscctl add armv6 \
@@ -59,19 +61,19 @@ binmiscctl add armv6 \
     --set-enabled
 ```
 
-## Create Jail
+### Create Jail
 
 ```sh
 poudriere jail -c -j 11armv6 -m svn -a arm.armv6 -v release/11.0.1
 ```
 
-## Install Default Ports Tree
+### Install Default Ports Tree
 
 ```sh
 poudriere ports -c
 ```
 
-## Create Package List
+### Create Package List
 
 `/usr/local/etc/poudriere.d/pkglist.txt`:
 
@@ -81,19 +83,19 @@ www/nginx
 [...]
 ```
 
-## Provisioning Package Options (Optional)
+### Provisioning Package Options (Optional)
 
 ```sh
 poudriere options -cf /usr/local/etc/poudriere.d/pkglist.txt
 ```
 
-## Build
+### Build
 
 ```sh
 poudriere bulk -j 11armv6 -f /usr/local/etc/poudriere.d/pkglist.txt
 ```
 
-## Create Repository Server
+### Create Repository Server
 
 ```sh
 pkg install nginx
@@ -148,7 +150,7 @@ server {
 service nginx start
 ```
 
-## Configure Clients to Use the Repository
+### Configure Clients to Use the Repository
 
 ```sh
 mkdir -p /usr/local/etc/pkg/repos/
@@ -167,7 +169,7 @@ Poudriere: {
 pkg update -f
 ```
 
-## Update the Poudriere Ports Tree and Build Changes
+### Update the Poudriere Ports Tree and Build Changes
 
 ```sh
 poudriere ports -u

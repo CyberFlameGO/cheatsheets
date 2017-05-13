@@ -1,6 +1,6 @@
 # Poudriere ARMv6 Cross-Building Package Server How-to
 
-The official binary packages for ARMv6 platforms (Raspberry Pi 1/2, etc.) are very much out of date. Here's how to supply your machines with fresh packages, configured to your needs.
+The official binary packages for ARMv6 platforms (Raspberry Pi 1/2, etc.) are often out of date and some packages are not available at all. What's more, some packages refuse to compile without the system sources or won't compile at all. Here's how to supply your machines with fresh packages, configured to your needs.
 
 ## The Quick and Dirty Way
 

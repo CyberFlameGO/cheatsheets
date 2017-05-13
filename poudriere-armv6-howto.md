@@ -83,7 +83,7 @@ www/nginx
 [...]
 ```
 
-### Provisioning Package Options (Optional)
+### Provision Package Options (Optional)
 
 ```sh
 poudriere options -cf /usr/local/etc/poudriere.d/pkglist.txt

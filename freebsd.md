@@ -38,7 +38,7 @@ rm -rf /usr/jails
 
 ### Install Kernel and System Sources
 ```bash
-svnlite checkout http://svn.freebsd.org/base/stable/11 /usr/src
+svnlite checkout https://svn.freebsd.org/base/release/11.0.1 /usr/src
 ```
 
 

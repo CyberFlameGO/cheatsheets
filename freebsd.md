@@ -3,6 +3,7 @@
 
 ## Table of Contents
 
+- [Boot](#boot)
 - [File Systems](#file-systems)
 - [Jails](#jails)
 - [Kernel](#kernel)
@@ -14,6 +15,13 @@
 - [Updates](#updates)
 - [ZFS](#zfs)
 
+## Boot
+
+### Reduce Boot-Time Delay
+```
+# /boot/loader.conf
+autoboot_delay="3"
+```
 
 ## File Systems
 

@@ -122,6 +122,19 @@ portsnap fetch update
 freebsd-update fetch install
 ```
 
+### Update FreeBSD from source
+```bash
+svn update /usr/src
+# check /usr/src/UPDATING for manual steps
+cd /usr/src
+make -j4 buildworld
+make -j4 kernel KERNCONF=GENERIC
+shutdown -r now
+cd /usr/src
+make installworld
+mergemaster -Ui
+shutdown -r now
+```
 
 ## ZFS
 

@@ -57,6 +57,10 @@ svnlite checkout https://svn.freebsd.org/base/release/11.0.1 /usr/src
 chflags schg /etc/resolv.conf
 ```
 
+### Restart Network Service over SSH
+```bash
+/etc/rc.d/netif restart && /etc/rc.d/routing restart
+```
 
 ## Permissions
 

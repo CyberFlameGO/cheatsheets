@@ -12,6 +12,7 @@
 - [pkgng](#pkgng)
 - [Software](#software)
 - [SSH](#ssh)
+- [Time](#time)
 - [Updates](#updates)
 - [ZFS](#zfs)
 
@@ -102,6 +103,15 @@ python -m ensurepip
 ssh-keygen -o -a 100 -t ed25519
 ```
 
+
+## Time
+
+### Force Update Date and Time
+```bash
+service ntpd stop
+ntpd -q -g
+service ntpd start
+```
 
 ## Updates
 

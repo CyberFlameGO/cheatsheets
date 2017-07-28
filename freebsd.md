@@ -89,6 +89,31 @@ pkg install `cat pkglist.txt`
 
 ## Software
 
+### Basic make.conf for Headless Servers
+```
+OPTIONS_SET=OPTIMIZED_CFLAGS
+BUILD_OPTIMIZED=YES
+
+# Build optimizations
+CPUTYPE?=native
+OPTIONS_SET=OPTIMIZED_CFLAGS CPUFLAGS
+
+# Headless server options
+OPTIONS_SET+=ICONV
+OPTIONS_UNSET=CUPS DEBUG DOCS FONTCONFIG NLS X11
+WITHOUT_MODULES=sound ntfs linux
+WITHOUT_X11=yes
+
+# Disable sendmail
+NO_SENDMAIL=true
+
+# Fresh OpenSSL from Ports
+DEFAULT_VERSIONS+=ssl=openssl
+
+# Other options
+DEFAULT_VERSIONS+=ruby=2.4
+```
+
 ### Install Python with pip
 ```bash
 pkg install python && \

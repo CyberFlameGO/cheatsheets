@@ -170,3 +170,8 @@ exit
 zpool export zroot
 reboot
 ```
+
+### Remount Read-Only Root ZFS Pool as Read-Write
+```bash
+zfs set readonly=off zroot
+```

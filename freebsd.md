@@ -170,7 +170,7 @@ freebsd-update fetch install
 ### Update FreeBSD from source
 ```bash
 svn update /usr/src
-less check /usr/src/UPDATING
+less /usr/src/UPDATING
 cd /usr/src
 make -j4 buildworld
 make -j4 kernel

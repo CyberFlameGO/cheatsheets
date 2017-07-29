@@ -138,6 +138,12 @@ ntpd -q -g
 service ntpd start
 ```
 
+### Set timezone
+```bash
+ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
+```
+
+
 ## Updates
 
 ### Install portmaster

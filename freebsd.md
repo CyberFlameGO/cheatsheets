@@ -168,6 +168,13 @@ freebsd-update fetch install
 ```
 
 ### Update FreeBSD from source
+For a new release:
+```bash
+mv /usr/src /usr/src.bak
+svn checkout https://svn.freebsd.org/base/releng/11.1 /usr/src
+```
+
+Always:
 ```bash
 svn update /usr/src
 less /usr/src/UPDATING

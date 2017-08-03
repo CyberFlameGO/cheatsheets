@@ -82,7 +82,7 @@ nat on $if_int inet from $vpnclients to any -> $if_int
 
 block in
 
-pass in on $if_int proto udp from any to $if_int port $openvpnport
+pass in on $if_int proto tcp from any to $if_int port $openvpnport
 pass in on $if_int from any to any
 pass in inet proto icmp all icmp-type $icmptypes
 pass out quick

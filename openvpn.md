@@ -59,3 +59,53 @@ cp /usr/local/etc/openvpn/easy-rsa/pki/ca.crt /usr/local/etc/openvpn
 cp /usr/local/etc/openvpn/easy-rsa/pki/private/server.key /usr/local/etc/openvpn
 cp /usr/local/etc/openvpn/easy-rsa/pki/issued/server.crt /usr/local/etc/openvpn
 ```
+
+### Set Firewall Rules
+
+```
+# /etc/pf.conf
+
+### Internal Interface
+if_int=bge0
+
+### Client network
+vpnclients = "10.8.0.0/24"
+
+### OpenVPN Port
+openvpnport = "{ 443 }"
+icmptypes = "{ echoreq, unreach }"
+
+set skip on lo
+
+### Enable NAT for OpenVPN Clients
+nat on $if_int inet from $vpnclients to any -> $if_int
+
+block in
+
+pass in on $if_int proto udp from any to $if_int port $openvpnport
+pass in on $if_int from any to any
+pass in inet proto icmp all icmp-type $icmptypes
+pass out quick
+```
+
+### Enable Firewall on Boot
+
+```
+# /etc/rc.conf
+
+gateway_enable="YES"
+pf_enable="YES"
+pf_rules="/etc/pf.conf"
+```
+
+### Enable IP Forwarding
+
+``` bash
+sysctl net.inet.ip.forwarding=1
+```
+
+### Load Firewall Rules and Enable
+
+```bash
+pfctl -ef /etc/pf.conf
+```

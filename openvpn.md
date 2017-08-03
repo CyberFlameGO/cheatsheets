@@ -109,3 +109,10 @@ sysctl net.inet.ip.forwarding=1
 ```bash
 pfctl -ef /etc/pf.conf
 ```
+
+### Edit Configuration, Test and Start
+```bash
+ee /usr/local/etc/openvpn/server.conf
+openvpn --config /usr/local/etc/openvpn/server.conf
+service openvpn start
+```

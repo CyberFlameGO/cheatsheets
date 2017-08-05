@@ -60,6 +60,12 @@ cp /usr/local/etc/openvpn/easy-rsa/pki/private/server.key /usr/local/etc/openvpn
 cp /usr/local/etc/openvpn/easy-rsa/pki/issued/server.crt /usr/local/etc/openvpn
 ```
 
+### Remove Passphrase from Private Key
+
+```bash
+openssl rsa -in /usr/local/etc/openvpn/server.key -out /usr/local/etc/openvpn/server.key
+```
+
 ### Set Firewall Rules
 
 ```

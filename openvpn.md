@@ -29,7 +29,7 @@ make install clean
 
 ```bash
 sysrc openvpn_enable="YES"
-sysrc openvpn_config="/usr/local/etc/openvpn/server.conf"
+sysrc openvpn_configfile="/usr/local/etc/openvpn/server.conf"
 ```
 
 ### Create Server Configuration

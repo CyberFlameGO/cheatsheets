@@ -71,27 +71,15 @@ openssl rsa -in /usr/local/etc/openvpn/server.key -out /usr/local/etc/openvpn/se
 ```
 # /etc/pf.conf
 
-### Internal Interface
-if_int=bge0
+### Interfaces
+ext_if = "bge0"
+vpn_if = "tun0"
 
-### Client network
-vpnclients = "10.8.0.0/24"
-
-### OpenVPN Port
-openvpnport = "{ 443 }"
-icmptypes = "{ echoreq, unreach }"
-
-set skip on lo
-
-### Enable NAT for OpenVPN Clients
-nat on $if_int inet from $vpnclients to any -> $if_int
+pass in on $ext_if proto udp to ($ext_if) port 1194
+pass in on ($vpn_if) from any to any
 
 block in
-
-pass in on $if_int proto tcp from any to $if_int port $openvpnport
-pass in on $if_int from any to any
-pass in inet proto icmp all icmp-type $icmptypes
-pass out quick
+pass out
 ```
 
 ### Enable Firewall on Boot

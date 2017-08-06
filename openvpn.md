@@ -60,6 +60,12 @@ cp /usr/local/etc/openvpn/easy-rsa/pki/private/server.key /usr/local/etc/openvpn
 cp /usr/local/etc/openvpn/easy-rsa/pki/issued/server.crt /usr/local/etc/openvpn
 ```
 
+### Create TLS Key
+
+```bash
+openvpn --genkey --secret /usr/local/etc/openvpn/ta.key
+```
+
 ### Remove Passphrase from Private Key
 
 ```bash

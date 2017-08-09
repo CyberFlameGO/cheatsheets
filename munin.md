@@ -33,7 +33,7 @@ Run `vipw` and change the shell of the `munin` user from `/usr/sbin/nologin` to 
 munin:*:842:842::0:0:Munin:/var/munin:/bin/sh
 ```
 
-Change to ``munin` user and set up SSH access:
+Change to `munin` user and set up SSH access:
 
 ```bash
 su munin

@@ -4,7 +4,7 @@
 
 ## Install and Configure on FreeBSD 11
 
-### Load Kernel Modules
+### Load Kernel Module
 
 Load into active session:
 ```bash

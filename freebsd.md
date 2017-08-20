@@ -92,6 +92,7 @@ pkg install `cat pkglist.txt`
 ### Setup ccache
 2 GB tmpfs
 ```bash
+portmaster devel/ccache
 mkdir /ram
 echo 'none /ram tmpfs rw,size=2147483648 0 0' >> /etc/fstab
 mount /ram

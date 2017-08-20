@@ -91,16 +91,19 @@ pkg install `cat pkglist.txt`
 
 ### Basic make.conf for Headless Servers
 ```
-OPTIONS_SET=OPTIMIZED_CFLAGS
-BUILD_OPTIMIZED=YES
+# ccache
+WRKDIRPREFIX=/ram
+CCACHE_DIR=/var/cache/ccache
+WITH_CCACHE_BUILD=yes
 
-# Build optimizations
+# Build Optimizations
 CPUTYPE?=native
 OPTIONS_SET=OPTIMIZED_CFLAGS CPUFLAGS
+BUILD_OPTIMIZED=YES
 
 # Headless server options
 OPTIONS_SET+=ICONV
-OPTIONS_UNSET=CUPS DEBUG DOCS FONTCONFIG NLS X11
+OPTIONS_UNSET=CUPS DEBUG FONTCONFIG NLS X11
 WITHOUT_MODULES=sound ntfs linux
 
 # Disable sendmail
@@ -108,9 +111,6 @@ NO_SENDMAIL=true
 
 # Fresh OpenSSL from Ports
 DEFAULT_VERSIONS+=ssl=openssl
-
-# Other options
-DEFAULT_VERSIONS+=ruby=2.4
 ```
 
 ### Install Python with pip

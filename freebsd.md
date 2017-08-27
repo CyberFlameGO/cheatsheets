@@ -248,6 +248,16 @@ shutdown -r now
 
 ## ZFS
 
+### Create Pool from Image
+```bash
+zpool create tank /path/to/filesystem.img
+```
+
+### Mount Pool from Image
+```bash
+zpool import -d /path/to/filesystem.img tank
+```
+
 ### Mount Pool with Different Root
 Useful for untrusted pools or ones that mount to system directories.
 ```bash

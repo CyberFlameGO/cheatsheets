@@ -63,6 +63,21 @@ chflags schg /etc/resolv.conf
 /etc/rc.d/netif restart && /etc/rc.d/routing restart
 ```
 
+### Mount Samba Share
+```bash
+mount_smbfs -I 1.2.3.4 //username@server/share /path/to/local/mnt
+```
+
+### Mount Samba Share with Credentials
+```
+# ~/.nsmbrc
+[SERVER:USERNAME]
+password=password
+```
+```bash
+mount_smbfs -N -I 1.2.3.4 //username@server/share /path/to/local/mnt
+```
+
 ## Permissions
 
 ### Make file undeleteable, even by root

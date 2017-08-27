@@ -255,7 +255,7 @@ zpool create tank /path/to/filesystem.img
 
 ### Mount Pool from Image
 ```bash
-zpool import -d /path/to/filesystem.img tank
+zpool import -d /path/to/folder/containing/filesystem.img tank
 ```
 
 ### Mount Pool with Different Root

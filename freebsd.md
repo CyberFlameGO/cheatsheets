@@ -71,6 +71,7 @@ mount_smbfs -I 1.2.3.4 //username@server/share /path/to/local/mnt
 ### Mount Samba Share with Credentials
 ```
 # ~/.nsmbrc
+
 [SERVER:USERNAME]
 password=password
 ```

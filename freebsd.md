@@ -154,7 +154,7 @@ ssh-keygen -o -a 100 -t ed25519
 
 ### Restrict SSH User Access
 ```bash
-# ~/.ssh/authroized_keys
+# ~/.ssh/authorized_keys
 
 from="1.2.3.0/24,44.55.66.77",no-agent-forwarding,no-port-forwarding,no-X11-forwarding,command="/usr/local/bin/whatever" ssh-rsa [...]
 ```

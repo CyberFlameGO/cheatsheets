@@ -26,6 +26,34 @@ autoboot_delay="3"
 
 ## File Systems
 
+### Create Sparse Image
+`seek` specifies the size.
+```bash
+dd if=/dev/zero of=filesystem.img bs=1 seek=100G count=1
+```
+
+### Grow Sparse Image
+```bash
+dd if=/dev/zero of=filesystem.img bs=1 seek=200G count=1
+```
+
+### Create File System in Image
+```bash
+mdconfig filesystem.img
+newfs -U /dev/md0
+mount /dev/md0 /path/to/local/mnt
+```
+
+### Resize File System in Image
+```bash
+umount /dev/md0
+mdconfig -d -u md0
+dd if=/dev/zero of=filesystem.img bs=1 seek=200G count=1
+mdconfig filesystem.img
+growfs /dev/md0
+mount /dev/md0 /path/to/local/mnt
+```
+
 ### Mount Linux EXT4 in LVM2
 ```bash
 kldload /boot/kernel/geom_linux_lvm.ko

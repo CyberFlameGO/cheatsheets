@@ -10,6 +10,7 @@
 - [Networking](#networking)
 - [Permissions](#permissions)
 - [pkgng](#pkgng)
+- [Shell](#shell)
 - [Software](#software)
 - [SSH](#ssh)
 - [Time](#time)
@@ -128,6 +129,14 @@ pkg info -ao > pkglist.txt
 rm /var/db/pkg/local.sqlite
 pkg update -f
 pkg install `cat pkglist.txt`
+```
+
+
+## Shell
+
+### Clear csh History and Logout
+```bash
+echo > ~/.history && history -c && exit
 ```
 
 

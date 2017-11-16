@@ -57,12 +57,12 @@ mount /dev/md0 /path/to/local/mnt
 
 ### Mount/Unmount ISO File
 ```bash
-# Mount
+## Mount
 mkdir /media/cdrom
 mdconfig -a -t vnode -f /path/to/iso/file
 mount -t cd9660 /dev/md0 /media/cdrom
 
-# Unmount
+## Unmount
 umount /media/cdrom
 mdconfig -d -u md0
 ```
@@ -191,25 +191,25 @@ mount /ram
 
 ### Basic make.conf for Headless Servers
 ```
-# ccache
+## ccache
 WRKDIRPREFIX=/ram
 CCACHE_DIR=/var/cache/ccache
 WITH_CCACHE_BUILD=yes
 
-# Build Optimizations
+## Build Optimizations
 CPUTYPE?=native
 OPTIONS_SET=OPTIMIZED_CFLAGS CPUFLAGS
 BUILD_OPTIMIZED=YES
 
-# Headless server options
+## Headless server options
 OPTIONS_SET+=ICONV
 OPTIONS_UNSET=CUPS DEBUG FONTCONFIG NLS X11
 WITHOUT_MODULES=sound ntfs linux
 
-# Disable sendmail
+## Disable sendmail
 NO_SENDMAIL=true
 
-# Fresh OpenSSL from Ports
+## Fresh OpenSSL from Ports
 DEFAULT_VERSIONS+=ssl=openssl
 ```
 

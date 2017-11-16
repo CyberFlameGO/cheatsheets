@@ -55,6 +55,18 @@ growfs /dev/md0
 mount /dev/md0 /path/to/local/mnt
 ```
 
+### Mount/Unmount ISO File
+```bash
+# Mount
+mkdir /media/cdrom
+mdconfig -a -t vnode -f /path/to/iso/file
+mount -t cd9660 /dev/md0 /media/cdrom
+
+# Unmount
+umount /media/cdrom
+mdconfig -d -u md0
+```
+
 ### Mount Linux EXT4 in LVM2
 ```bash
 kldload /boot/kernel/geom_linux_lvm.ko

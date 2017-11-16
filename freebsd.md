@@ -22,6 +22,7 @@
 ### Reduce Boot-Time Delay
 ```bash
 # /boot/loader.conf
+
 autoboot_delay="3"
 ```
 

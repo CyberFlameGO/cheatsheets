@@ -154,7 +154,7 @@ echo > ~/.history && history -c && exit
 
 ## Software
 
-### Add CD-ROM Software Repository
+### Use CD-ROM Software Repository
 
 First, either mount FreeBSD CD-ROM or ISO to `/dist`.
 
@@ -169,6 +169,10 @@ cdrom: {
   url: "file:///dist/packages/${ABI}",
   mirror_type: "none",
   enabled: yes
+}
+
+FreeBSD: {
+  enabled: no
 }
 ```
 

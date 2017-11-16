@@ -24,6 +24,7 @@
 # /boot/loader.conf
 
 autoboot_delay="3"
+beastie_disable="YES"
 ```
 
 ## File Systems

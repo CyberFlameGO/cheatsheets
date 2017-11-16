@@ -154,6 +154,28 @@ echo > ~/.history && history -c && exit
 
 ## Software
 
+### Add CD-ROM Software Repository
+
+First, either mount FreeBSD CD-ROM or ISO to `/dist`.
+
+```bash
+mkdir -p /usr/local/etc/pkg/repos
+```
+
+```
+# /usr/local/etc/pkg/repos/cdrom.conf
+
+cdrom: {
+  url: "file:///dist/packages/${ABI}",
+  mirror_type: "none",
+  enabled: yes
+}
+```
+
+```bash
+pkg update
+```
+
 ### Setup ccache
 2 GB tmpfs
 ```bash

@@ -20,7 +20,7 @@
 ## Boot
 
 ### Reduce Boot-Time Delay
-```
+```bash
 # /boot/loader.conf
 autoboot_delay="3"
 ```
@@ -74,7 +74,6 @@ pkg install fusefs-ext4fuse
 ext4fuse /dev/linux_lvm/volumegroup-logicalvolume /mnt
 ```
 
-
 ## Jails
 
 ### Completely Remove Jail Folders
@@ -83,14 +82,12 @@ chflags -R noschg /usr/jails && \
 rm -rf /usr/jails
 ```
 
-
 ## Kernel
 
 ### Install Kernel and System Sources
 ```bash
 svnlite checkout https://svn.freebsd.org/base/release/11.0.1 /usr/src
 ```
-
 
 ## Networking
 
@@ -110,7 +107,7 @@ mount_smbfs -I 1.2.3.4 //username@server/share /path/to/local/mnt
 ```
 
 ### Mount Samba Share with Credentials
-```
+```bash
 # ~/.nsmbrc
 
 [SERVER:USERNAME]
@@ -131,7 +128,6 @@ chflags schg /path/to/file
 chflags noschg /path/to/file
 ```
 
-
 ## pkgng
 
 ### Fix Corrupt SQLite Database
@@ -143,14 +139,12 @@ pkg update -f
 pkg install `cat pkglist.txt`
 ```
 
-
 ## Shell
 
 ### Clear csh History and Logout
 ```bash
 echo > ~/.history && history -c && exit
 ```
-
 
 ## Software
 
@@ -162,7 +156,7 @@ First, either mount FreeBSD CD-ROM or ISO to `/dist`.
 mkdir -p /usr/local/etc/pkg/repos
 ```
 
-```
+```bash
 # /usr/local/etc/pkg/repos/cdrom.conf
 
 cdrom: {
@@ -219,7 +213,6 @@ pkg install python && \
 python -m ensurepip
 ```
 
-
 ## SSH
 
 ### Create secure SSH key
@@ -247,7 +240,6 @@ service ntpd start
 ```bash
 ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 ```
-
 
 ## Updates
 

@@ -150,6 +150,11 @@ echo > ~/.history && history -c && exit
 
 ## Software
 
+### List Installed Ports/Packages
+```bash
+pkg query --all '%o %n-%v %R'
+```
+
 ### Use CD-ROM Software Repository
 
 First, either mount FreeBSD CD-ROM or ISO to `/dist`.

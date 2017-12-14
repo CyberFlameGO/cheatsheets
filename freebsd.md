@@ -134,6 +134,16 @@ Confirm:
 netstat -r
 ```
 
+Command | Purpose
+------- | -------
+U	      | The route is active (up).
+H	      | The route destination is a single host.
+G	      | Send anything for this destination on to this gateway, which will figure out from there where to send it.
+S	      | This route was statically configured.
+C	      | Clones a new route based upon this route for machines to connect to. This type of route is normally used for local networks.
+W	      | The route was auto-configured based upon a local area network (clone) route.
+L	      | Route involves references to Ethernet (link) hardware.
+
 ## Permissions
 
 ### Make file undeleteable, even by root

@@ -119,6 +119,21 @@ password=password
 mount_smbfs -N -I 1.2.3.4 //username@server/share /path/to/local/mnt
 ```
 
+### Set Default Route
+```bash
+route add default 10.20.30.1
+```
+```
+# /etc/rc.conf
+
+defaultrouter="10.20.30.1"
+```
+
+Confirm:
+```bash
+netstat -r
+```
+
 ## Permissions
 
 ### Make file undeleteable, even by root

@@ -237,10 +237,16 @@ from="1.2.3.0/24,44.55.66.77",no-agent-forwarding,no-port-forwarding,no-X11-forw
 ## Time
 
 ### Force Update Date and Time
+If `ntpd` is installed:
 ```bash
 service ntpd stop
 ntpd -q -g
 service ntpd start
+```
+
+With base `ntp`:
+```
+ntpdate -v -b in.pool.ntp.org
 ```
 
 ### Set timezone

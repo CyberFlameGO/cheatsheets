@@ -146,7 +146,7 @@ L	      | Route involves references to Ethernet (link) hardware.
 
 ## Permissions
 
-### Make file undeleteable, even by root
+### Make File Undeleteable, Even by Root
 ```bash
 ## Enable
 chflags schg /path/to/file
@@ -274,7 +274,7 @@ With base `ntp`:
 ntpdate -v -b in.pool.ntp.org
 ```
 
-### Set timezone
+### Set Timezone
 ```bash
 ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 ```
@@ -287,22 +287,22 @@ cd /usr/ports/ports-mgmt/portmaster && \
 make install clean
 ```
 
-### Install FreeBSD ports collection
+### Install FreeBSD Ports Collection
 ```bash
 portsnap fetch extract
 ```
 
-### Upgrade FreeBSD ports collection
+### Upgrade FreeBSD Ports Collection
 ```bash
 portsnap fetch update
 ```
 
-### Fetch binary updates
+### Fetch Binary Updates
 ```bash
 freebsd-update fetch install
 ```
 
-### Update FreeBSD from source
+### Update FreeBSD from Source
 For a new release:
 ```bash
 mv /usr/src /usr/src.bak
@@ -341,7 +341,7 @@ Useful for untrusted pools or ones that mount to system directories.
 zpool import -f -R /mnt pool
 ```
 
-### Rescue ZFS-on-Root system
+### Rescue ZFS-on-Root System
 This comes in handy on `unable to remount devfs under dev` errors, for example. Reboot machine from USB/CD/network image. Select "Live System", then:
 ```bash
 mkdir /tmp/mnt

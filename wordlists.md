@@ -16,3 +16,5 @@ sed -E '/^.{,6}$/d' /path/to/input/file > /path/to/output/file
 ```bash
 sort -us -o /path/to/output/file /path/to/input/file
 ```
+
+If you encounter errors like `sort: mbrtowc error: Illegal byte sequence`, use `gsort`.

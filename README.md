@@ -1,5 +1,6 @@
 ## Table of Contents
 
+- [Dovecot](dovecot.md)
 - [FreeBSD](freebsd.md)
 - [Git](git.md)
 - [Munin](munin.md)

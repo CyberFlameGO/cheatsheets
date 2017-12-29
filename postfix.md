@@ -3,7 +3,18 @@
 
 ## Table of Contents
 
+- [Configuration Options](#configuration-options)
 - [Spam Blocking](#spam-blocking)
+
+## Configuration Options
+
+### Message Size
+This example limits to ~ 25 MB. Attachments are ~ 30% bigger than displayed.
+```
+# /etc/postfix/main.cf
+
+message_size_limit = 25600000
+```
 
 ## Spam Blocking
 

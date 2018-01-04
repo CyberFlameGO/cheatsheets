@@ -130,3 +130,7 @@ UPDATE table SET foo = 'bar' WHERE id = 1;
 ```sql
 DELETE FROM table WHERE id = 1;
 ```
+
+## Client Application Usage
+
+* https://www.postgresql.org/docs/current/static/app-psql.html

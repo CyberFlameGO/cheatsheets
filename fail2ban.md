@@ -1,6 +1,6 @@
 # fail2ban
 
-> Die, script kiddies, die!
+> On the streets, saving the server from the forces of evil.
 
 ## FreeBSD
 

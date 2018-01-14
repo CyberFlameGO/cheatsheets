@@ -6,6 +6,10 @@
 
 ### Config
 
+```sh
+pkg install py27-fail2ban py27-pyinotify
+```
+
 ```
 # /etc/rc.conf
 

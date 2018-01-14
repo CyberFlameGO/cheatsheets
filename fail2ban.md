@@ -48,6 +48,7 @@ banaction = pf[actiontype=<allports>]
 banaction = pf[actiontype=<multiport>]
 backend = pyinotify
 default_backend = pyinotify
+ignoreip = 10.20.30.40/32
 ```
 
 ```

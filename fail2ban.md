@@ -46,6 +46,8 @@ anchor "f2b/*"
 [DEFAULT]
 banaction = pf[actiontype=<allports>]
 banaction = pf[actiontype=<multiport>]
+backend = pyinotify
+default_backend = pyinotify
 ```
 
 ```

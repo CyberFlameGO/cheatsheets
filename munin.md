@@ -20,7 +20,7 @@ make install clean
 Configure:
 
 ```bash
-munin-node-configure --shell | sh -x
+munin-node-configure --shell --families=contrib,auto | sh -x
 sysrc munin_node_enable=YES
 sysrc munin_asyncd_enable=YES
 service munin-node start

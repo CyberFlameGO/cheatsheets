@@ -87,7 +87,7 @@ rm -rf /usr/jails
 ## Kernel
 
 ### Determining the Version of FreeBSD
-In ascending level of obscurity, helpful of dealing with appliances based on FreeBSD.
+In ascending level of obscurity, helpful when dealing with appliances based on FreeBSD.
 ```bash
 freebsd-version
 ```

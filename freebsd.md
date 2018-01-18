@@ -123,7 +123,7 @@ chflags schg /etc/resolv.conf
 
 ### Mount Samba Share
 ```bash
-mount_smbfs -I 1.2.3.4 //username@server/share /path/to/local/mnt
+mount_smbfs -I 10.20.30.40 //username@server/share /path/to/local/mnt
 ```
 
 ### Mount Samba Share with Credentials
@@ -134,7 +134,7 @@ mount_smbfs -I 1.2.3.4 //username@server/share /path/to/local/mnt
 password=password
 ```
 ```bash
-mount_smbfs -N -I 1.2.3.4 //username@server/share /path/to/local/mnt
+mount_smbfs -N -I 10.20.30.40 //username@server/share /path/to/local/mnt
 ```
 
 ### Set Default Route
@@ -274,7 +274,7 @@ ssh-keygen -o -a 100 -t ed25519
 ```bash
 # ~/.ssh/authorized_keys
 
-from="1.2.3.0/24,44.55.66.77",no-agent-forwarding,no-port-forwarding,no-X11-forwarding,command="/usr/local/bin/whatever" ssh-rsa [...]
+from="10.20.30.0/24,44.55.66.77",no-agent-forwarding,no-port-forwarding,no-X11-forwarding,command="/usr/local/bin/whatever" ssh-rsa [...]
 ```
 
 ## Time

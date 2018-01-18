@@ -106,7 +106,7 @@ objdump -sj .data /boot/kernel/kernel | tail -n 22
 
 ### Install Kernel and System Sources
 ```bash
-svnlite checkout https://svn.freebsd.org/base/release/11.0.1 /usr/src
+svnlite checkout https://svn.freebsd.org/base/release/11.1.0 /usr/src
 ```
 
 ## Networking

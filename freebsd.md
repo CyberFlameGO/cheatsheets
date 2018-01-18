@@ -86,6 +86,24 @@ rm -rf /usr/jails
 
 ## Kernel
 
+### Determining the Version of FreeBSD
+In ascending level of obscurity, helpful of dealing with appliances based on FreeBSD.
+```bash
+freebsd-version
+```
+
+```bash
+sysctl -n kern.osrelease kern.ostype
+```
+
+```bash
+ident /boot/kernel/kernel
+```
+
+```bash
+objdump -sj .data /boot/kernel/kernel | tail -n 22
+```
+
 ### Install Kernel and System Sources
 ```bash
 svnlite checkout https://svn.freebsd.org/base/release/11.0.1 /usr/src

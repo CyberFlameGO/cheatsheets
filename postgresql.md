@@ -21,6 +21,33 @@ createdb test_db
 exit
 ```
 
+## Basic Commands
+
+Command | Action
+------- | ------
+`\l` | List all databases
+`\c dbname` | Connect to a database
+`\dt` | View list of relations/tables
+`\d tablename` | Describe the details of a table
+`\h` | Get help on syntax of SQL commands
+`\?` | Lists all slash commands
+`\set` | System variables list
+`\q` | Quit
+
+## Basic Command-Line Operations
+
+### Create New Database
+
+```sh
+createdb dbname
+```
+
+### Remove Database
+
+```sh
+dropdb dbname
+```
+
 ## Create Database
 ```sql
 CREATE DATABASE dbname;

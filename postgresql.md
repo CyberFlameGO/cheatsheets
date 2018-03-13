@@ -2,6 +2,25 @@
 
 > The definitive SQL database.
 
+## Installation in FreeBSD Jail
+
+```sh
+ezjail create postgres 'lo0|192.168.0.10'
+ezjail console -f postgres
+pkg update
+pkg install postgresql10-server
+sysrc postgresql_enable="YES"
+exit
+echo 'export jail_postgres_parameters="allow.sysvipc=1"' >> /usr/local/etc/ezjail/postgres
+ezjail-admin restart postgres
+service postgresql initdb
+service postgresql start
+su postgres
+createuser root
+createdb test_db
+exit
+```
+
 ## Create Database
 ```sql
 CREATE DATABASE dbname;

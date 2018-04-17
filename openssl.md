@@ -2,6 +2,11 @@
 
 > Security is a good thing.
 
+## Create Self-Signed Certificate
+```bash
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+```
+
 ## Create dhparam
 ```bash
 openssl dhparam -out /etc/ssl/dhparam.pem

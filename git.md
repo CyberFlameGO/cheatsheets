@@ -67,3 +67,30 @@ git submodule update --recursive --remote
 git tag v1.0
 git push origin v1.0
 ```
+
+
+## Rebasing
+
+### Squash Several Commits Into a Single Commit
+
+```bash
+git checkout squashed_feature
+git rebase -i development
+```
+
+Squash all commits but the first.
+
+```
+pick fda59df commit 1
+squash x536897 commit 2
+squash c01a668 commit 3
+```
+
+Write a proper commit message, probably with a Jira ticket number or the like.
+
+Checkout development branch and merge squashed feature branch.
+
+```bash
+git checkout development
+git merge squashed_feature
+```

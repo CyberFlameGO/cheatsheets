@@ -94,3 +94,9 @@ Checkout development branch and merge squashed feature branch.
 git checkout development
 git merge squashed_feature
 ```
+
+Newer Git allows you to do this in one step:
+
+```bash
+git merge --squash squashed_feature
+```

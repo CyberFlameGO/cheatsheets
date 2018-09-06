@@ -43,6 +43,7 @@ cp /usr/local/share/examples/openvpn/sample-config-files/server.conf /usr/local/
 cp -r /usr/local/share/easy-rsa /usr/local/etc/openvpn/easy-rsa
 cd /usr/local/etc/openvpn/easy-rsa
 vi vars
+source vars
 ./easyrsa.real init-pki
 ./easyrsa.real gen-dh
 ./easyrsa.real build-ca
@@ -80,7 +81,7 @@ ext_if = "bge0"
 vpn_if = "tun0"
 
 pass in on $ext_if proto udp to ($ext_if) port 1194
-pass in on ($vpn_if) from any to any
+pass in on $vpn_if from any to any
 
 block in
 pass out
@@ -109,8 +110,50 @@ pfctl -ef /etc/pf.conf
 ```
 
 ### Edit Configuration, Test and Start
+
 ```bash
 ee /usr/local/etc/openvpn/server.conf
 openvpn --config /usr/local/etc/openvpn/server.conf
 service openvpn start
+```
+
+### Generate Client Certificate
+
+```bash
+cd /usr/local/etc/openvpn/easy-rsa
+./easyrsa.real build-client-full client1
+```
+
+### Generate Client Configuration
+
+```bash
+#!/bin/sh
+
+CLIENTNAME="client1"
+
+cat << EOF >> $CLIENTNAME.ovpn
+client
+dev tun
+proto udp
+remote vpn.example.com 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+cipher AES-256-CBC
+key-direction 1
+EOF
+
+echo "<ca>" >> $CLIENTNAME.ovpn
+cat /usr/local/etc/openvpn/easy-rsa/pki/ca.crt >> $CLIENTNAME.ovpn
+echo "</ca>" >> $CLIENTNAME.ovpn
+echo "<cert>" >> $CLIENTNAME.ovpn
+cat /usr/local/etc/openvpn/easy-rsa/pki/issued/$CLIENTNAME.crt >> $CLIENTNAME.ovpn
+echo "</cert>" >> $CLIENTNAME.ovpn
+echo "<key>" >> $CLIENTNAME.ovpn
+cat /usr/local/etc/openvpn/easy-rsa/pki/private/$CLIENTNAME.key >> $CLIENTNAME.ovpn
+echo "</key>" >> $CLIENTNAME.ovpn
+echo "<tls-auth>" >> $CLIENTNAME.ovpn
+cat /usr/local/etc/openvpn/ta.key >> $CLIENTNAME.ovpn
+echo "</tls-auth>" >> $CLIENTNAME.ovpn
 ```

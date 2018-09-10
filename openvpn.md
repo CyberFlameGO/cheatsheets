@@ -79,6 +79,9 @@ openssl rsa -in /usr/local/etc/openvpn/server.key -out /usr/local/etc/openvpn/se
 ### Interfaces
 ext_if = "bge0"
 vpn_if = "tun0"
+vpn_net="10.8.1.0/24"
+
+nat on $ext_if inet from $vpn_net to any -> $ext_if
 
 pass in on $ext_if proto udp to ($ext_if) port 1194
 pass in on $vpn_if from any to any

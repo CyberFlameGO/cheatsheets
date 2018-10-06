@@ -57,7 +57,7 @@ Now that you know the current version in use, you need to let `ezjail` upgrade *
 To do so, run the following:
 
 ```sh
-ezjail-admin update -U -s 10.1-RELEASE
+ezjail-admin update -U -s 11.1-RELEASE
 ```
 
 Afterwards, restart all jails for good measure:

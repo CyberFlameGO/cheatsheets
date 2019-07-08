@@ -359,6 +359,19 @@ Useful for untrusted pools or ones that mount to system directories.
 zpool import -f -R /mnt pool
 ```
 
+### Replace Failed ZFS-on-Root Disk
+Usually those are mirrors, which is what those instructions are for. The assumed failed disk is `ada1`. Swap size could differ, check that before this action with `gpart show`.
+```bash
+zpool offline <FAILED_DISK>
+zpool detach <FAILED_DISK>
+# Physically swap defective disk for a working disk
+gpart add -b 40 -l gptboot1 -s 512K -t freebsd-boot ada1
+gpart add -s 16G -l swap1 -t freebsd-swap ada1
+gpart add -t freebsd-zfs -l zfs1 ada1
+zpool attach zroot ada0p3 ada1p3
+gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 ada1
+```
+
 ### Rescue ZFS-on-Root System
 This comes in handy on `unable to remount devfs under dev` errors, for example. Reboot machine from USB/CD/network image. Select "Live System", then:
 ```bash

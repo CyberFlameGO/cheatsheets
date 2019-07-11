@@ -89,7 +89,7 @@ tcp_pass = "{ ssh }"
 
 set skip on lo1
 block in all
-pass out
+pass out all
 
 pass in on $ext_if proto tcp to any port $tcp_pass keep state
 pass inet proto icmp all icmp-type echoreq keep state

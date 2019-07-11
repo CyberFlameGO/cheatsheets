@@ -111,6 +111,11 @@ svnlite checkout https://svn.freebsd.org/base/release/11.1.0 /usr/src
 
 ## Networking
 
+### Check for Listening Ports
+```bash
+sockstat -46l | grep -E -e "\*:[[:digit:]]"
+```
+
 ### Prevent resolv.conf from Being Overwritten
 ```bash
 chflags schg /etc/resolv.conf

@@ -5,6 +5,7 @@
 
 - [Boot](#boot)
 - [File Systems](#file-systems)
+- [Firewall](#firewall)
 - [Jails](#jails)
 - [Kernel](#kernel)
 - [Networking](#networking)
@@ -74,6 +75,25 @@ mdconfig -d -u md0
 kldload /boot/kernel/geom_linux_lvm.ko
 pkg install fusefs-ext4fuse
 ext4fuse /dev/linux_lvm/volumegroup-logicalvolume /mnt
+```
+
+## Firewall
+
+### Minimal Configuration
+```
+ext_if = "em0"
+tcp_pass = "{ ssh }"
+# net_jail="127.0.1.0/24"
+
+# nat on $ext_if from $net_jail to any -> $ext_if
+
+set skip on lo1
+block in all
+pass out
+
+pass in on $ext_if proto tcp to any port $tcp_pass keep state
+pass inet proto icmp all icmp-type echoreq keep state
+pass inet6 proto icmp6 all icmp6-type echoreq keep state
 ```
 
 ## Jails

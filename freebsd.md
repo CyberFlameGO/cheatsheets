@@ -93,7 +93,7 @@ pass out all
 
 pass in on $ext_if proto tcp to any port $tcp_pass keep state
 pass inet proto icmp all icmp-type echoreq keep state
-pass inet6 proto icmp6 all icmp6-type echoreq keep state
+pass in quick proto icmp6 all
 ```
 
 ## Jails
@@ -198,9 +198,8 @@ ifconfig_em0="inet 192.168.0.6 netmask 255.255.255.0"
 defaultrouter="192.168.0.254"
 
 ### IPv6 (multiple aliases possible)
-ifconfig_em0_ipv6="inet6 accept_rtadv"
-rtsold_enable="YES"
-ifconfig_em0_aliases="inet6 2a03:abcd:abcd:abcd:abcd:1 prefixlen 64"
+ifconfig_em0_ipv6="inet6 2a03:4000:36:3f8::1/64"
+ipv6_defaultrouter="fe80::1%em0"
 ```
 
 ## Permissions

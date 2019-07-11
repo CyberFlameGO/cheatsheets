@@ -313,6 +313,13 @@ With base `ntp`:
 ntpdate -v -b in.pool.ntp.org
 ```
 
+### Stop Listening on any Interface
+```
+# /etc/ntp.conf
+
+interface ignore wildcard
+```
+
 ### Set Timezone
 ```bash
 ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime

@@ -162,6 +162,22 @@ C	      | Clones a new route based upon this route for machines to connect to. T
 W	      | The route was auto-configured based upon a local area network (clone) route.
 L	      | Route involves references to Ethernet (link) hardware.
 
+#### Set Static IP Address for Interface
+```
+# /etc/rc.conf
+
+hostname="freebsd.example.com"
+
+### IPv4
+ifconfig_em0="inet 192.168.0.6 netmask 255.255.255.0"
+defaultrouter="192.168.0.254"
+
+### IPv6 (multiple aliases possible)
+ifconfig_em0_ipv6="inet6 accept_rtadv"
+rtsold_enable="YES"
+ifconfig_em0_aliases="inet6 2a03:abcd:abcd:abcd:abcd:1 prefixlen 64"
+```
+
 ## Permissions
 
 ### Make File Undeleteable, Even by Root

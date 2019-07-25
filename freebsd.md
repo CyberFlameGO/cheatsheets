@@ -6,6 +6,7 @@
 - [Boot](#boot)
 - [File Systems](#file-systems)
 - [Firewall](#firewall)
+- [Hardware](#hardware)
 - [Jails](#jails)
 - [Kernel](#kernel)
 - [Networking](#networking)
@@ -94,6 +95,13 @@ pass out all
 pass in on $ext_if proto tcp to any port $tcp_pass keep state
 pass inet proto icmp all icmp-type echoreq keep state
 pass in quick proto icmp6 all
+```
+
+## Hardware
+
+### Get Harddisk Information
+```bash
+camcontrol identify ada0
 ```
 
 ## Jails

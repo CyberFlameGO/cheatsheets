@@ -6,6 +6,7 @@
 
 * [Set CPU Affinity](#set-cpu-affinity)
 * [Upgrade Base Jail](#upgrade-base-jail)
+* [Disable Obsolete Warning](#disable-obsolete-warning)
 
 ### Set CPU Affinity
 You can limit the specific cores a jail uses but not a number of automatically scheduled ones. This can be done as a single core, a range of cores or a list cores.
@@ -64,4 +65,10 @@ Afterwards, restart all jails for good measure:
 
 ```sh
 ezjail-admin restart
+```
+
+### Disable Obsolete Warning
+> /etc/rc.d/jail: WARNING: Per-jail configuration via jail_* variables  is obsolete.  Please consider migrating to /etc/jail.conf.
+```sh
+sysrc jail_confwarn="NO"
 ```

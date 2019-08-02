@@ -4,6 +4,7 @@
 - [FreeBSD](freebsd.md)
 - [Git](git.md)
 - [Munin](munin.md)
+- [Nginx](nginx.md)
 - [MySQL](mysql.md)
 - [OpenSSL](openssl.md)
 - [OpenVPN](openvpn.md)

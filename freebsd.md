@@ -12,7 +12,7 @@
 - [Networking](#networking)
 - [Permissions](#permissions)
 - [pkgng](#pkgng)
-- [rc.d](#rc.d)
+- [rc.d](#rcd)
 - [Shell](#shell)
 - [Software](#software)
 - [SSH](#ssh)

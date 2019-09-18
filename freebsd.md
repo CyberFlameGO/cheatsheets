@@ -12,6 +12,7 @@
 - [Networking](#networking)
 - [Permissions](#permissions)
 - [pkgng](#pkgng)
+- [rc.d](#rc.d)
 - [Shell](#shell)
 - [Software](#software)
 - [SSH](#ssh)
@@ -231,6 +232,35 @@ rm /var/db/pkg/local.sqlite
 pkg update -f
 pkg install `cat pkglist.txt`
 ```
+
+## rc.d
+
+### Sample Script
+
+```sh
+#!/bin/sh
+#
+# PROVIDE: fooapp
+# REQUIRE: networking
+# KEYWORD:
+
+. /etc/rc.subr
+
+name="fooapp"
+rcvar="fooapp_enable"
+fooapp_user="fooapp"
+fooapp_command="/usr/local/fooapp/fooapp"
+pidfile="/var/run/fooapp/${name}.pid"
+command="/usr/sbin/daemon"
+command_args="-P ${pidfile} -r -f ${fooapp_command}"
+
+load_rc_config $name
+: ${fooapp_enable:=no}
+
+run_rc_command "$1"
+```
+
+Remember to create the `fooapp` user, the `pidfile` path and apply user permissions to it.
 
 ## Shell
 

@@ -8,8 +8,10 @@
 - [Nginx](nginx.md)
 - [OpenSSL](openssl.md)
 - [OpenVPN](openvpn.md)
+- [pf](pf.md)
 - [Postfix](postfix.md)
 - [Poudriere](poudriere-armv6-howto.md)
+- [Snippets](snippets.md)
 - [VirtualBox](virtualbox.md)
 - [Wordlist Management](wordlists.md)
 

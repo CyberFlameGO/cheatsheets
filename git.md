@@ -8,6 +8,14 @@
 git archive --format=tar --prefix=foo_bar-1.0/ v1.0 | xz > foo_bar-1.1.tar.xz
 ```
 
+## Branching
+
+### Delete Remote Branch
+
+```sh
+git push origin :the_remote_branch
+```
+
 ## Changing Author Info
 
 ### Whole Repository

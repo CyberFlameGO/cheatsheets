@@ -10,6 +10,17 @@ git archive --format=tar --prefix=foo_bar-1.0/ v1.0 | xz > foo_bar-1.1.tar.xz
 
 ## Branching
 
+### Always Collapse to Single Commit
+
+```sh
+git checkout --orphan $TEMP_BRANCH
+git add -A
+git commit -am "Initial commit"
+git branch -D master
+git branch -m master
+git push --force origin master
+```
+
 ### Delete Remote Branch
 
 ```sh

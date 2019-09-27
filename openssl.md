@@ -1,6 +1,6 @@
-# OpenSSL
+# OpenSSL Cheatsheet
 
-> Security is a good thing.
+> Security is a good thing. Web security in particular.
 
 ## Create Self-Signed Certificate
 ```bash

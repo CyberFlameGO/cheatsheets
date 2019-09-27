@@ -1,4 +1,4 @@
-# PostgreSQL
+# PostgreSQL Cheatsheet
 
 > The definitive SQL database.
 
@@ -23,16 +23,16 @@ exit
 
 ## Basic Commands
 
-Command | Action
-------- | ------
-`\l` | List all databases
-`\c dbname` | Connect to a database
-`\dt` | View list of relations/tables
+Command        | Action
+-------------- | ----------------------------------
+`\l`           | List all databases
+`\c dbname`    | Connect to a database
+`\dt`          | View list of relations/tables
 `\d tablename` | Describe the details of a table
-`\h` | Get help on syntax of SQL commands
-`\?` | Lists all slash commands
-`\set` | System variables list
-`\q` | Quit
+`\h`           | Get help on syntax of SQL commands
+`\?`           | Lists all slash commands
+`\set`         | System variables list
+`\q`           | Quit
 
 ## Basic Command-Line Operations
 
@@ -57,9 +57,9 @@ CREATE DATABASE dbname;
 With auto numbering integer id.
 ```sql
 CREATE TABLE tablename (
- id serial PRIMARY KEY,
- name varchar(50) UNIQUE NOT NULL,
- dateCreated timestamp DEFAULT current_timestamp
+    id serial PRIMARY KEY,
+    name varchar(50) UNIQUE NOT NULL,
+    dateCreated timestamp DEFAULT current_timestamp
 );
 ```
 
@@ -106,7 +106,7 @@ SELECT cols FROM table LIMIT 10 OFFSET 30;
 ## Prepared Statements
 ```sql
 PREPARE preparedInsert (int, varchar) AS
-  INSERT INTO tableName (intColumn, charColumn) VALUES ($1, $2);
+    INSERT INTO tableName (intColumn, charColumn) VALUES ($1, $2);
 EXECUTE preparedInsert (1,'a');
 EXECUTE preparedInsert (2,'b');
 DEALLOCATE preparedInsert;
@@ -114,9 +114,9 @@ DEALLOCATE preparedInsert;
 
 ## Create a Function
 ```sql
-CREATE OR REPLACE FUNCTION month (timestamp) RETURNS integer 
- AS 'SELECT date_part(''month'', $1)::integer;'
-LANGUAGE 'sql';
+CREATE OR REPLACE FUNCTION month (timestamp) RETURNS integer
+    AS 'SELECT date_part(''month'', $1)::integer;'
+    LANGUAGE 'sql';
 ```
 
 ## Table Maintenance
@@ -151,8 +151,8 @@ GRANT ALL PRIVILEGES ON table TO username;
 
 ## Perform a Transaction
 ```sql
-BEGIN TRANSACTION 
- UPDATE accounts SET balance += 50 WHERE id = 1;
+BEGIN TRANSACTION
+UPDATE accounts SET balance += 50 WHERE id = 1;
 COMMIT;
 ```
 

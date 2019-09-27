@@ -1,4 +1,4 @@
-# fail2ban
+# fail2ban Cheatsheet
 
 > On the streets, saving the server from the forces of evil.
 

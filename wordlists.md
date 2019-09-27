@@ -1,4 +1,4 @@
-# Wordlists
+# Wordlists Cheatsheet
 
 > Tools to deal with wordlists, yo.
 

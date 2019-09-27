@@ -1,4 +1,4 @@
-# OpenVPN
+# OpenVPN Cheatsheet
 
 > VPN for smart people.
 

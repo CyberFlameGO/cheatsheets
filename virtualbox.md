@@ -1,4 +1,4 @@
-# VirtualBox
+# VirtualBox Cheatsheet
 
 > Get the most out of open source virtualization.
 

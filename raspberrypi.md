@@ -1,11 +1,11 @@
-# Raspberry Pi
+# Raspberry Pi Cheatsheet
 
-> Small and powerful.
+> Small and dangerous.
 
 ## Table of Contents
 
-* [Display Rotation](#display-rotation)
-* [Headless Setup](#headless-setup)
+- [Display Rotation](#display-rotation)
+- [Headless Setup](#headless-setup)
 
 ## Display Rotation
 ```

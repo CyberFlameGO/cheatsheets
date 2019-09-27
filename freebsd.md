@@ -1,4 +1,5 @@
 # FreeBSD Cheatsheet
+
 > The handbook is great, but this is the short one.
 
 ## Table of Contents
@@ -15,7 +16,6 @@
 - [rc.d](#rcd)
 - [Shell](#shell)
 - [Software](#software)
-- [SSH](#ssh)
 - [Time](#time)
 - [Updates](#updates)
 - [ZFS](#zfs)
@@ -339,20 +339,6 @@ DEFAULT_VERSIONS+=ssl=openssl
 ```bash
 pkg install python && \
 python -m ensurepip
-```
-
-## SSH
-
-### Create secure SSH key
-```bash
-ssh-keygen -o -a 100 -t ed25519
-```
-
-### Restrict SSH User Access
-```bash
-# ~/.ssh/authorized_keys
-
-from="10.20.30.0/24,44.55.66.77",no-agent-forwarding,no-port-forwarding,no-X11-forwarding,command="/usr/local/bin/whatever" ssh-rsa [...]
 ```
 
 ## Time

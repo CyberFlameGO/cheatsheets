@@ -1,6 +1,6 @@
 # Snippets
 
-> Miscellaneous Usefulness.
+> Miscellaneous usefulness.
 
 ## Grepping
 

@@ -1,6 +1,6 @@
 # Git Cheatsheet
 
-> Git is a powerful tool but confusing.
+> Powerful but confusing.
 
 ## Archive
 
@@ -52,7 +52,6 @@ git replace -d 03f482d6
 git push -f
 ```
 
-
 ## Submodules
 
 ### Update all Submodules
@@ -60,14 +59,12 @@ git push -f
 git submodule update --recursive --remote
 ```
 
-
 ## Tags
 
 ``` bash
 git tag v1.0
 git push origin v1.0
 ```
-
 
 ## Rebasing
 

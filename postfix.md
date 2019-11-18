@@ -5,6 +5,7 @@
 ## Table of Contents
 
 - [Configuration Options](#configuration-options)
+- [Inspecting Email Queue](#inspecting-email-queue)
 - [Spam Blocking](#spam-blocking)
 
 ## Configuration Options
@@ -15,6 +16,35 @@ This example limits to ~ 25 MB. Attachments are ~ 30% bigger than displayed.
 # /etc/postfix/main.cf
 
 message_size_limit = 25600000
+```
+
+## Inspecting Email Queue
+
+### Display Queue
+```sh
+postqueue -p
+```
+
+### View Message
+```sh
+postcat -vq <QUEUE_ID>
+```
+
+### Flush Queue
+```sh
+postqueue -f
+```
+
+### Delete Messages from Queue
+```sh
+## All Mail
+postsuper -d ALL
+
+## Deferred Mail
+postsuper -d ALL deferred
+
+## By Email Address
+mailq | tail +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($8 == "email@address.com" && $9 == "") print $1 } ' | tr -d '*!' | postsuper -d -
 ```
 
 ## Spam Blocking

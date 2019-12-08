@@ -18,6 +18,7 @@
 - [Poudriere](poudriere-armv6-howto.md)
 - [Raspberry Pi](raspberrypi.md)
 - [Snippets](snippets.md)
+- [tmux](tmux.md)
 - [VirtualBox](virtualbox.md)
 - [Wordlist Management](wordlists.md)
 

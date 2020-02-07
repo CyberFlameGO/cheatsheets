@@ -11,7 +11,7 @@ grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0
 
 ### Valid IPv4 CIDR Range
 ```sh
-grep -E -o "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$"
+grep -E -o "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))"
 ```
 
 ### Valid IPv6 Address
@@ -27,4 +27,26 @@ grep -E -o "^s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:
 ### Hostname
 ```sh
 grep -E -o "^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9-]*[A-Za-z0-9])"
+```
+
+## Nginx
+
+### Extract User Agent Strings
+```sh
+awk -F\" '{print $6}'
+```
+
+or
+
+```sh
+cut -d\" -f 6
+```
+
+## Text Manipulation
+
+### Skip First n Lines
+The rule is n+1, so the following command skips the first 10 lines. Or, a bit 
+easier to remember, *starts* at line 11.
+```sh
+tail -n +11 /path/to/file
 ```

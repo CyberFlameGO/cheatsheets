@@ -4,7 +4,18 @@
 
 ## Table of Contents
 
+- [Configuration](#configuration)
 - [SSL](#ssl)
+
+## Configuration
+
+### Prevent Crawlers from Indexing Certain Files
+```
+location ~ \.(m4v|oga|ogg|pdf)$ {
+    try_files $uri $uri/;
+    add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+}
+```
 
 ## SSL
 

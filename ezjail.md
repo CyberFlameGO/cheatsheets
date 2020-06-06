@@ -8,6 +8,11 @@
 * [Upgrade Base Jail](#upgrade-base-jail)
 * [Disable Obsolete Warning](#disable-obsolete-warning)
 
+### Disable Jail Autostart
+```
+ezjail-admin config -r norun <JAIL_NAME>
+```
+
 ### Set CPU Affinity
 You can limit the specific cores a jail uses but not a number of automatically 
 scheduled ones. This can be done as a single core, a range of cores or a list 

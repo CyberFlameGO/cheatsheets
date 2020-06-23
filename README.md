@@ -17,6 +17,7 @@
 - [PostgreSQL](postgresql.md)
 - [Poudriere](poudriere-armv6-howto.md)
 - [Raspberry Pi](raspberrypi.md)
+- [rsync](rsync.md)
 - [Snippets](snippets.md)
 - [tmux](tmux.md)
 - [VirtualBox](virtualbox.md)

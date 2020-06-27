@@ -4,10 +4,31 @@
 
 ## Table of Contents
 
+- [Command-Line Usage](#command-line-usage)
 - [File Operations](#file-operations)
 - [Iteration](#iteration)
 - [Network Connections](#network-connections)
 - [Type Casting](#type-casting)
+
+## Command-Line Usage
+
+### Argument Parsing
+```py
+import argparse
+
+parser = argparse.ArgumentParser(description="Something useful.")
+parser.add_argument("input", help="Input file", nargs='?')
+parser.add_argument("output", help="Output file", nargs='?')
+parser.add_argument("--flag", help="An optional flag", action='append')
+
+args = parser.parse_args()
+
+if args.flag is not None:
+    print("The flag was provided.")
+
+print(args.input)
+print(args.output)
+```
 
 ## File Operations
 

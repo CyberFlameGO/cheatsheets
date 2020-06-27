@@ -16,6 +16,7 @@
 - [Postfix](postfix.md)
 - [PostgreSQL](postgresql.md)
 - [Poudriere](poudriere-armv6-howto.md)
+- [Python](python.md)
 - [Raspberry Pi](raspberrypi.md)
 - [rsync](rsync.md)
 - [Snippets](snippets.md)
@@ -25,6 +26,9 @@
 
 ## Caffeinating
 
-When you find this helpful, you could buy me a coffee. Keeping me properly caffeinated accelerates things. And it would really make my day. Kindness of strangers and all that. If you can't or won't, no hard feelings. It's available completely free for a reason. Still, it would be awesome.
+When you find this helpful, you could buy me a coffee. Keeping me properly 
+caffeinated accelerates things. And it would really make my day. Kindness of 
+strangers and all that. If you can't or won't, no hard feelings. It's available 
+completely free for a reason. Still, it would be awesome.
 
 https://github.com/sponsors/herrbischoff

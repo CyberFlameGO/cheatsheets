@@ -140,6 +140,21 @@ svnlite checkout https://svn.freebsd.org/base/release/11.1.0 /usr/src
 
 ## Networking
 
+### Add Network Alias
+```bash
+# IPv4
+ifconfig vtnet0 alias 10.80.0.67/32
+
+# IPv6
+ifconfig vtnet0 inet6 2610:1c1:0:4::3 prefixlen 64 alias
+```
+```
+# /etc/rc.conf
+
+ifconfig_em0_alias0="inet  10.80.0.67/32"
+ifconfig_em0_alias1="inet6 2610:1c1:0:4::3 prefixlen 64"
+```
+
 ### Check for Listening Ports
 ```bash
 sockstat -46l | grep -E -e "\*:[[:digit:]]"

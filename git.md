@@ -4,14 +4,13 @@
 
 ## Archive
 
-``` bash
+```sh
 git archive --format=tar --prefix=foo_bar-1.0/ v1.0 | xz > foo_bar-1.1.tar.xz
 ```
 
 ## Branching
 
 ### Always Collapse to Single Commit
-
 ```sh
 git checkout --orphan $TEMP_BRANCH
 git add -A
@@ -22,16 +21,36 @@ git push --force origin master
 ```
 
 ### Delete Remote Branch
-
 ```sh
 git push origin :the_remote_branch
 ```
 
 ## Changing Author Info
 
+### Last Commit
+```sh
+git commit --amend --author="John Doe <john@doe.org>"
+```
+
+## Single Older Commit
+This uses interactive rebase.
+```sh
+# Identify the commit before the one you want to change and start rebase.
+git rebase -i -p 8294ad8
+
+# In the editor window that opens, identify all commits you want to change and 
+change "pick" to "edit".
+
+# Change author name
+git commit --amend --author="John Doe <john@doe.org>" --no-edit
+
+# Continue rebase
+git rebase --continue
+```
+
 ### Whole Repository
 Change `OLD_EMAIL`, `CORRECT_NAME` and `CORRECT_EMAIL` to desired values, afterwards run `git push --force --tags origin 'refs/heads/*'`.
-``` bash
+```sh
 git filter-branch --env-filter '
 OLD_EMAIL="your-old-email@example.com"
 CORRECT_NAME="Your Correct Name"
@@ -49,38 +68,16 @@ fi
 ' --tag-name-filter cat -- --branches --tags
 ```
 
-### One Commit
-
-``` bash
-# Checkout the commit we are trying to modify.
-git checkout 03f482d6
-
-# Make the author change.
-git commit --amend --author "New Author Name <New Author Email>"
-
-# Replace the old commit with the new one locally.
-git replace 03f482d6 42627abe
-
-# Rewrite all future commits based on the replacement.
-git filter-branch -- --all
-
-# Remove the replacement for cleanliness.
-git replace -d 03f482d6
-
-# Push the new history (after sanity checking with git log).
-git push -f
-```
-
 ## Submodules
 
 ### Update all Submodules
-```bash
+```sh
 git submodule update --recursive --remote
 ```
 
 ## Tags
 
-``` bash
+```sh
 git tag v1.0
 git push origin v1.0
 ```
@@ -89,7 +86,7 @@ git push origin v1.0
 
 ### Squash Several Commits Into a Single Commit
 
-```bash
+```sh
 git checkout squashed_feature
 git rebase -i development
 ```
@@ -106,13 +103,14 @@ Write a proper commit message, probably with a Jira ticket number or the like.
 
 Checkout development branch and merge squashed feature branch.
 
-```bash
+```sh
 git checkout development
 git merge squashed_feature
 ```
 
-Newer Git allows you to do this in one step:
+Newer Git allows you to do the squash merge in one step if you use feature 
+branches:
 
-```bash
+```sh
 git merge --squash squashed_feature
 ```

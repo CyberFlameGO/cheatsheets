@@ -5,6 +5,7 @@
 ## Table of Contents
 
 - [Command-Line Usage](#command-line-usage)
+- [Databases](#databases)
 - [File Operations](#file-operations)
 - [Iteration](#iteration)
 - [Network Connections](#network-connections)
@@ -28,6 +29,57 @@ if args.flag is not None:
 
 print(args.input)
 print(args.output)
+```
+
+## Databases
+
+### TinyDB
+
+#### Install
+```sh
+pip install tinydb
+```
+
+#### Use
+```py
+from tinydb import TinyDB, Query
+
+db = TinyDB('db.json')
+
+# Insert
+db.insert({ 'type': 'OSFY', 'count': 700 })
+db.insert({ 'type': 'EFY', 'count': 800 })
+
+# Dump
+db.all()
+# => [{'count': 700, 'type': 'OSFY'}, {'count': 800, 'type': 'EFY'}]
+
+# Search and List
+Magazine = Query()
+db.search(Magazine.type == 'OSFY')
+# => [{'count': 700, 'type': 'OSFY'}]
+ 
+db.search(Magazine.count > 750)
+# => [{'count': 800, 'type': 'EFY'}]
+
+# Update
+db.update({'count': 1000}, Magazine.type == 'OSFY')
+db.all()
+# => [{'count': 1000, 'type': 'OSFY'}, {'count': 800, 'type': 'EFY'}]
+
+# Remove
+db.remove(Magazine.count < 900)
+db.all()
+# => [{'count': 800, 'type': 'EFY'}]
+
+# Purge
+db.purge()
+db.all()
+# => []
+
+# In-Memory Use
+from tinydb.storages import MemoryStorage
+db = TinyDB(storage=MemoryStorage)
 ```
 
 ## File Operations

@@ -108,21 +108,31 @@ for i in range(10):
 
 #### JSON
 ```py
+    urllib.request.urlopen(req)
+
 import json, urllib.request
 req = urllib.request.Request("https://httpbin.org/get")
 req.add_header("Accept", "application/json")
-r = urllib.request.urlopen(req)
-data = json.loads(r.read())
-print(json.dumps(data))
+try:
+    r = urllib.request.urlopen(req)
+    data = json.loads(r.read())
+    print(json.dumps(data))
+except urllib.error.HTTPError as e:
+    print(e.code)
+    print(e.read())  
 ```
 
 #### Plain
 ```py
 import urllib.request
 req = urllib.request.Request("https://httpbin.org/get")
-r = urllib.request.urlopen(req)
-data = r.read().decode("utf-8")
-print(data)
+try:
+    r = urllib.request.urlopen(req)
+    data = r.read().decode("utf-8")
+    print(data)
+except urllib.error.HTTPError as e:
+    print(e.code)
+    print(e.read())  
 ```
 
 ## Type Casting

@@ -22,6 +22,9 @@ git push --force origin master
 
 ### Delete Remote Branch
 ```sh
+git push origin --delete the_remote_branch
+```
+```sh
 git push origin :the_remote_branch
 ```
 

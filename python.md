@@ -70,6 +70,17 @@ class colors:
 print(f"{colors.bold}{colors.fg.green}Success!")
 ```
 
+### Execute Shell Commands
+```py
+import subprocess
+cmd = subprocess.Popen(['ls', '-l', '.'], 
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.STDOUT)
+stdout, stderr = cmd.communicate()
+print(stdout)
+print(stderr)
+```
+
 ## Databases
 
 ### TinyDB

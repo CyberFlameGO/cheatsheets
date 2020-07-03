@@ -67,7 +67,7 @@ class colors:
         cyan='\033[46m'
         lightgrey='\033[47m'
 
-print(colors.bold + colors.fg.green + "Success!")
+print(f"{colors.bold}{colors.fg.green}Success!")
 ```
 
 ## Databases
@@ -147,8 +147,6 @@ for i in range(10):
 
 #### JSON
 ```py
-    urllib.request.urlopen(req)
-
 import json, urllib.request
 req = urllib.request.Request("https://httpbin.org/get")
 req.add_header("Accept", "application/json")

@@ -134,6 +134,40 @@ from tinydb.storages import MemoryStorage
 db = TinyDB(storage=MemoryStorage)
 ```
 
+### SQLite
+
+#### Use
+
+```py
+import sqlite3
+
+conn = sqlite3.connect('sqlite.db')
+
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS stargazers (id integer PRIMARY KEY, login text, email text)")
+conn.commit()
+
+data = ('herrbischoff', 'marcel@example.com')
+
+def sql_insert(data):
+    login = data[0]
+    cursor.execute(f'SELECT login FROM stargazers WHERE login = "{login}"')
+    results = cursor.fetchall()
+    if not results:
+        cursor.execute('INSERT INTO stargazers (login, email) VALUES (?, ?)', data)
+        conn.commit()
+    else:
+        print(f'User {login} already in database')
+
+def sql_fetch():
+    cursor.execute('SELECT * FROM stargazers')
+    rows = cursor.fetchall()
+    return rows
+
+sql_insert(data)
+print(sql_fetch())
+```
+
 ## File Operations
 
 * `x` creates new file, returns error when it exists.

@@ -71,6 +71,13 @@ fi
 ' --tag-name-filter cat -- --branches --tags
 ```
 
+## Committing
+
+### Commit Part of File
+```sh
+git add --patch /path/to/file
+```
+
 ## Submodules
 
 ### Update all Submodules
@@ -116,4 +123,21 @@ branches:
 
 ```sh
 git merge --squash squashed_feature
+```
+
+## Undo Changes
+
+### Undo Working Copy Modifications of One File
+You can do it without the `--`, but if the filename looks like a branch or tag 
+(or other revision identifier), it may get confused, so using -- is best.
+```sh
+git checkout -- file
+```
+([Source](https://stackoverflow.com/a/692329/1377323))
+
+## Settings
+
+### Show Staging Diff in Commit Message
+```sh
+git config --global commit.verbose true
 ```

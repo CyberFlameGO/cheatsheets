@@ -1,6 +1,7 @@
 ## Table of Contents
 
 - [apt](apt.md)
+- [curl](curl.md)
 - [Dovecot](dovecot.md)
 - [ezjail](ezjail.md)
 - [fail2ban](fail2ban.md)

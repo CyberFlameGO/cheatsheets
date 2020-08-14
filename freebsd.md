@@ -384,12 +384,6 @@ NO_SENDMAIL=true
 DEFAULT_VERSIONS+=ssl=openssl
 ```
 
-### Install Python with pip
-```sh
-pkg install python && \
-python -m ensurepip
-```
-
 ## Time
 
 ### Force Update Date and Time
@@ -484,7 +478,7 @@ Usually those are mirrors, which is what those instructions are for. The assumed
 ```sh
 zpool offline <FAILED_DISK>
 zpool detach <FAILED_DISK>
-# Physically swap defective disk for a working disk
+# ...physically swap defective disk for a working disk...
 gpart add -b 40 -l gptboot1 -s 512K -t freebsd-boot ada1
 gpart add -s 16G -l swap1 -t freebsd-swap ada1
 gpart add -t freebsd-zfs -l zfs1 ada1
@@ -499,7 +493,7 @@ mkdir /tmp/mnt
 zpool import -f -R /tmp/mnt zroot
 zfs mount zroot/ROOT/default
 chroot /tmp/mnt
-...make changes...
+# ...make changes...
 exit
 zpool export zroot
 reboot

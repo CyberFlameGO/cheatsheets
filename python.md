@@ -74,8 +74,9 @@ print(f"{colors.bold}{colors.fg.green}Success!")
 ```py
 import subprocess
 cmd = subprocess.Popen(
-        ['ls', '-l', '.'], 
-        stdout=subprocess.PIPE, 
+        ['ls', '-l', '.'],
+        cwd='/',
+        stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT
 )
 stdout, stderr = cmd.communicate()

@@ -5,6 +5,7 @@
 ## Table of Contents
 
 - [Boot](#boot)
+- [File Management](#file-management)
 - [File Systems](#file-systems)
 - [Firewall](#firewall)
 - [Hardware](#hardware)
@@ -29,6 +30,13 @@
 
 autoboot_delay="3"
 beastie_disable="YES"
+```
+
+## File Management
+
+### tar
+```sh
+tar -zcv --exclude='folder' -f theOutputTarFile.tar folderToTar
 ```
 
 ## File Systems

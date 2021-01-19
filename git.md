@@ -2,6 +2,12 @@
 
 > Powerful but confusing.
 
+## Start Repository with an Empty Commit
+You can now add/remove/whatever and the entire useful history will still be tweakable with a simple `git rebase -i`.
+```sh
+git commit --allow-empty -m "Initial commit"
+```
+
 ## Archive
 
 ```sh

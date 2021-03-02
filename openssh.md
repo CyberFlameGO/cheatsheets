@@ -36,3 +36,8 @@ from="10.20.30.0/24,44.55.66.77",no-agent-forwarding,no-port-forwarding,no-X11-f
 ```bash
 ssh-keygen -o -a 100 -t ed25519
 ```
+
+### Add Key to Remote Server
+```sh
+ssh-copy-id -i ~/.ssh/id_ed25519.pub username@remote
+```

@@ -92,17 +92,22 @@ ext4fuse /dev/linux_lvm/volumegroup-logicalvolume /mnt
 
 ### Minimal Configuration
 ```
-ext_if = "em0"
+ext_if = "vtnet0"
 tcp_pass = "{ ssh }"
+udp_pass = "{ 60000:60001 }"
 # net_jail="127.0.1.0/24"
 
 # nat on $ext_if from $net_jail to any -> $ext_if
 
-set skip on lo1
-block in all
-pass out all
+scrub in on $ext_if all fragment reassemble
 
-pass in on $ext_if proto tcp to any port $tcp_pass keep state
+set skip on lo1
+block in log all
+pass out log keep state
+antispoof for $ext_if inet
+
+pass in log on $ext_if proto tcp from any to any port $tcp_pass flags S/SA modulate state
+pass in log on $ext_if proto udp from any to any port $udp_pass
 pass inet proto icmp all icmp-type echoreq keep state
 pass in quick proto icmp6 all
 ```

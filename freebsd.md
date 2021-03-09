@@ -105,6 +105,7 @@ set skip on lo1
 block in log all
 pass out log keep state
 antispoof for $ext_if inet
+antispoof for $ext_if inet6
 
 pass in log on $ext_if proto tcp from any to any port $tcp_pass flags S/SA modulate state
 pass in log on $ext_if proto udp from any to any port $udp_pass

@@ -9,6 +9,7 @@
 - [File Operations](#file-operations)
 - [Iteration](#iteration)
 - [Network Connections](#network-connections)
+- [Text Operations](#text-operations)
 - [Type Casting](#type-casting)
 
 ## Command-Line Usage
@@ -227,6 +228,14 @@ try:
 except urllib.error.HTTPError as e:
     print(e.code)
     print(e.read())  
+```
+
+## Text Operations
+
+### Convert Binary to String
+
+```py
+b'a string'.decode('ascii')
 ```
 
 ## Type Casting

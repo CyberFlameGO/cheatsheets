@@ -171,6 +171,8 @@ print(sql_fetch())
 
 ## File Operations
 
+### Basic
+
 * `x` creates new file, returns error when it exists.
 * `a` appends to file, creates it when it does not exist.
 * `w` overwrites file, creates it when it does not exist.
@@ -179,6 +181,13 @@ print(sql_fetch())
 f = open("file.txt", "a")
 f.write("More content.")
 f.close()
+```
+
+### Skip First Couple of Lines
+
+```py
+with open('yourfile.txt') as f:
+    lines_after_2 = f.readlines()[2:]
 ```
 
 ## Iteration

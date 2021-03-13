@@ -263,9 +263,14 @@ pkg update -f
 pkg install `cat pkglist.txt`
 ```
 
-### List Installed Ports
+### List All Installed Ports
 ```sh
-pkg query --all '%o %n-%v %R'
+pkg query --all '%o'
+```
+
+### List Manually Installed Ports
+```sh
+pkg query -e '%a = 0' %o
 ```
 
 ## Ports

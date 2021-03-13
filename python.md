@@ -8,6 +8,7 @@
 - [Databases](#databases)
 - [File Operations](#file-operations)
 - [Iteration](#iteration)
+- [Lists](#lists)
 - [Network Connections](#network-connections)
 - [Text Operations](#text-operations)
 - [Type Casting](#type-casting)
@@ -197,6 +198,15 @@ with open('yourfile.txt') as f:
 ```py
 for i in range(10):
     print(i)
+```
+
+## Lists
+
+### Deduplicate List
+```py
+for i in mylist:
+    if i not in newlist:
+        newlist.append(i)
 ```
 
 ## Network Connections

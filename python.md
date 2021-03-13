@@ -209,6 +209,11 @@ for i in mylist:
         newlist.append(i)
 ```
 
+```py
+from collections import OrderedDict
+newlist = list(OrderedDict.fromkeys(mylist))
+```
+
 ## Network Connections
 
 ### HTTP

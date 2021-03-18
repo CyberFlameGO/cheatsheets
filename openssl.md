@@ -4,7 +4,7 @@
 
 ## Create Self-Signed Certificate
 ```bash
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout /usr/local/etc/ssl/snakeoil-key.pem -out /usr/local/etc/ssl/snakeoil-cert.pem
 ```
 
 ## Create dhparam

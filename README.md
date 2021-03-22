@@ -10,6 +10,7 @@
 - [Munin](munin.md)
 - [MySQL](mysql.md)
 - [Nginx](nginx.md)
+- [OpenBSD](openbsd.md)
 - [OpenSSH](openssh.md)
 - [OpenSSL](openssl.md)
 - [OpenVPN](openvpn.md)

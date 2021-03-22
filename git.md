@@ -131,6 +131,27 @@ branches:
 git merge --squash squashed_feature
 ```
 
+## Reset
+
+### Reset Local Repository to Mirror Remote
+Setting your branch to exactly match the remote branch can be done in two 
+steps:
+```sh
+git fetch origin
+git reset --hard origin/master
+```
+
+If you want to save your current branch's state before doing this (just in 
+case), you can do:
+```sh
+git commit -a -m "Saving my work, just in case"
+git branch my-saved-work
+```
+
+Now your work is saved on the branch "my-saved-work" in case you decide you 
+want it back (or want to look at it later or diff it against your updated 
+branch).
+
 ## Undo Changes
 
 ### Undo Working Copy Modifications of One File

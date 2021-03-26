@@ -7,6 +7,7 @@
 - [fail2ban](fail2ban.md)
 - [FreeBSD](freebsd.md)
 - [Git](git.md)
+- [GnuPG](gnupg.md)
 - [Munin](munin.md)
 - [MySQL](mysql.md)
 - [Nginx](nginx.md)

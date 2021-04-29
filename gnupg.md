@@ -4,57 +4,15 @@
 
 ## Key Management
 
-### Generate
-```sh
-gpg --gen-key
-```
-
-### Export
-```sh
-gpg --export <uid>
-```
-
-### Import
-```sh
-gpg --import <filename>
-```
-
-### Revoke
-```sh
-gpg --gen-revoke
-```
-
-### List All
-```sh
-gpg --list-keys
-```
-
-### List All and Signatures
-```sh
-gpg --list-sigs
-```
-
-### List All and Fingerprints
-```sh
-gpg --fingerprint
-```
-
-### List Secret
-```sh
-gpg --list-secret-keys
-```
-
-### Delete
-```sh
-gpg --delete-key <uid>
-```
-
-### Delete Secret
-```sh
-gpg --delete-secret-key
-```
-
-### Edit
-```sh
-gpg --edit-key <uid>
-```
+------------------------- | -------------------------
+`gpg --gen-key`           | Generate
+`gpg --export <uid>`      | Export
+`gpg --import <filename>` | Import
+`gpg --gen-revoke`        | Revoke
+`gpg --list-keys`         | List All
+`gpg --list-sigs`         | List All and Signatures
+`gpg --fingerprint`       | List All and Fingerprints
+`gpg --list-secret-keys`  | List Secret
+`gpg --delete-key <uid>`  | Delete
+`gpg --delete-secret-key` | Delete Secret
+`gpg --edit-key <uid>`    | Edit

@@ -476,6 +476,13 @@ shutdown -r now
 
 ## ZFS
 
+### Update Bootcode After ZFS Pool Feature Update
+This is the most likely reason your zroot-based system will not boot after 
+updating ZFS feature flags.
+```sh
+gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 da0
+```
+
 ### Create Pool from Image
 ```sh
 zpool create tank /path/to/filesystem.img

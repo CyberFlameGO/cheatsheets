@@ -21,22 +21,22 @@ message_size_limit = 25600000
 ## Inspecting Email Queue
 
 ### Display Queue
-```sh
+```
 postqueue -p
 ```
 
 ### View Message
-```sh
+```
 postcat -vq <QUEUE_ID>
 ```
 
 ### Flush Queue
-```sh
+```
 postqueue -f
 ```
 
 ### Delete Messages from Queue
-```sh
+```
 ## All Mail
 postsuper -d ALL
 
@@ -85,7 +85,7 @@ smtpd_recipient_restrictions =
 [...]
 ```
 
-```bash
+```
 postmap /etc/postfix/rbl_override
 service postfix restart
 ```

@@ -6,7 +6,7 @@
 
 ### Config
 
-```sh
+```
 pkg install py27-fail2ban py27-pyinotify
 ```
 
@@ -65,11 +65,11 @@ bantime  = 86400
 
 ### Show Banned IPs
 
-```sh
+```
 pfctl -a "f2b/ssh-pf" -t f2b-ssh-pf -Ts
 ```
 
-```sh
+```
 # ~/bin/showbans.sh
 
 #!/bin/sh
@@ -86,6 +86,6 @@ exit 0
 
 ### Remove Banned IP
 
-```sh
+```
 fail2ban-client set ssh-pf unbanip 10.20.30.40
 ```

@@ -25,7 +25,7 @@
 ## Boot
 
 ### Reduce Boot-Time Delay
-```sh
+```
 # /boot/loader.conf
 
 autoboot_delay="3"
@@ -35,7 +35,7 @@ beastie_disable="YES"
 ## File Management
 
 ### tar
-```sh
+```
 tar -zcv --exclude='folder' -f theOutputTarFile.tar folderToTar
 ```
 
@@ -43,24 +43,24 @@ tar -zcv --exclude='folder' -f theOutputTarFile.tar folderToTar
 
 ### Create Sparse Image
 `seek` specifies the size.
-```sh
+```
 dd if=/dev/zero of=filesystem.img bs=1 seek=100G count=1
 ```
 
 ### Grow Sparse Image
-```sh
+```
 dd if=/dev/zero of=filesystem.img bs=1 seek=200G count=1
 ```
 
 ### Create File System in Image
-```sh
+```
 mdconfig filesystem.img
 newfs -U /dev/md0
 mount /dev/md0 /path/to/local/mnt
 ```
 
 ### Resize File System in Image
-```sh
+```
 umount /dev/md0
 mdconfig -d -u md0
 dd if=/dev/zero of=filesystem.img bs=1 seek=200G count=1
@@ -70,7 +70,7 @@ mount /dev/md0 /path/to/local/mnt
 ```
 
 ### Mount/Unmount ISO File
-```sh
+```
 ## Mount
 mkdir /media/cdrom
 mdconfig -a -t vnode -f /path/to/iso/file
@@ -82,7 +82,7 @@ mdconfig -d -u md0
 ```
 
 ### Mount Linux EXT4 in LVM2
-```sh
+```
 kldload /boot/kernel/geom_linux_lvm.ko
 pkg install fusefs-ext4fuse
 ext4fuse /dev/linux_lvm/volumegroup-logicalvolume /mnt
@@ -116,14 +116,14 @@ pass in quick proto icmp6 all
 ## Hardware
 
 ### Get Harddisk Information
-```sh
+```
 camcontrol identify ada0
 ```
 
 ## Jails
 
 ### Completely Remove Jail Folders
-```sh
+```
 chflags -R noschg /usr/jails && \
 rm -rf /usr/jails
 ```
@@ -132,31 +132,31 @@ rm -rf /usr/jails
 
 ### Determining the Version of FreeBSD
 In ascending level of obscurity, helpful when dealing with appliances based on FreeBSD.
-```sh
+```
 freebsd-version
 ```
 
-```sh
+```
 sysctl -n kern.osrelease kern.ostype
 ```
 
-```sh
+```
 ident /boot/kernel/kernel
 ```
 
-```sh
+```
 objdump -sj .data /boot/kernel/kernel | tail -n 22
 ```
 
 ### Install Kernel and System Sources
-```sh
+```
 svnlite checkout https://svn.freebsd.org/base/releng/12.2 /usr/src
 ```
 
 ## Networking
 
 ### Add Network Alias
-```sh
+```
 # IPv4
 ifconfig vtnet0 alias 10.80.0.67/32
 
@@ -171,48 +171,48 @@ ifconfig_em0_alias1="inet6 2610:1c1:0:4::3 prefixlen 64"
 ```
 
 ### Check for Listening Ports
-```sh
+```
 sockstat -46l | grep -E -e "\*:[[:digit:]]"
 ```
 
 ### Prevent resolv.conf from Being Overwritten
-```sh
+```
 chflags schg /etc/resolv.conf
 ```
 
 ### Restart Network Service over SSH
-```sh
+```
 /etc/rc.d/netif restart && /etc/rc.d/routing restart
 ```
 
 ### Mount Samba Share
-```sh
+```
 mount_smbfs -I 10.20.30.40 //username@server/share /path/to/local/mnt
 ```
 
 ### Mount Samba Share with Credentials
-```sh
+```
 # ~/.nsmbrc
 
 [SERVER:USERNAME]
 password=password
 ```
-```sh
+```
 mount_smbfs -N -I 10.20.30.40 //username@server/share /path/to/local/mnt
 ```
 
 ### Set Default Route
-```sh
+```
 route add default 10.20.30.1
 ```
-```sh
+```
 # /etc/rc.conf
 
 defaultrouter="10.20.30.1"
 ```
 
 Confirm:
-```sh
+```
 netstat -r
 ```
 
@@ -244,7 +244,7 @@ ipv6_defaultrouter="fe80::1%em0"
 ## Permissions
 
 ### Make File Undeleteable, Even by Root
-```sh
+```
 ## Enable
 chflags schg /path/to/file
 
@@ -256,7 +256,7 @@ chflags noschg /path/to/file
 
 ### Fix Corrupt SQLite Database
 Fixes "sqlite error while executing INSERT OR ROLLBACK INTO pkg_search".
-```sh
+```
 pkg info -ao > pkglist.txt
 rm /var/db/pkg/local.sqlite
 pkg update -f
@@ -264,12 +264,12 @@ pkg install `cat pkglist.txt`
 ```
 
 ### List All Installed Ports
-```sh
+```
 pkg query --all '%o'
 ```
 
 ### List Manually Installed Ports
-```sh
+```
 pkg query -e '%a = 0' %o
 ```
 
@@ -279,7 +279,7 @@ pkg query -e '%a = 0' %o
 Prints out all previously set options in `make.conf` compatible format. Enables
 creating pre-configured builds. Obviously only set the ones you absolutely
 require, otherwise it will easily break on changes.
-```sh
+```
 # process.sh
 
 #!/bin/sh
@@ -297,7 +297,7 @@ cat $FILE | \
 cat $TMP
 ```
 
-```sh
+```
 find '/var/db/ports/' -name 'options' -exec ./process.sh '{}' \;
 ```
 
@@ -305,7 +305,7 @@ find '/var/db/ports/' -name 'options' -exec ./process.sh '{}' \;
 
 ### Sample Script
 
-```sh
+```
 #!/bin/sh
 #
 # PROVIDE: fooapp
@@ -333,14 +333,14 @@ Remember to create the `fooapp` user, the `pidfile` path and apply user permissi
 ## Shell
 
 ### Clear csh History and Logout
-```sh
+```
 echo > ~/.history && history -c && exit
 ```
 
 ## Software
 
 ### List Installed Ports/Packages
-```sh
+```
 pkg query --all '%o %n-%v %R'
 ```
 
@@ -348,11 +348,11 @@ pkg query --all '%o %n-%v %R'
 
 First, either mount FreeBSD CD-ROM or ISO to `/dist`.
 
-```sh
+```
 mkdir -p /usr/local/etc/pkg/repos
 ```
 
-```sh
+```
 # /usr/local/etc/pkg/repos/cdrom.conf
 
 cdrom: {
@@ -366,13 +366,13 @@ FreeBSD: {
 }
 ```
 
-```sh
+```
 pkg update
 ```
 
 ### Setup ccache
 2 GB tmpfs
-```sh
+```
 portmaster devel/ccache
 mkdir /ram
 echo 'none /ram tmpfs rw,size=2147483648 0 0' >> /etc/fstab
@@ -407,14 +407,14 @@ DEFAULT_VERSIONS+=ssl=openssl
 
 ### Force Update Date and Time
 If `ntpd` is installed:
-```sh
+```
 service ntpd stop
 ntpd -q -g
 service ntpd start
 ```
 
 With base `ntp`:
-```sh
+```
 ntpdate -v -b in.pool.ntp.org
 ```
 
@@ -426,42 +426,42 @@ interface ignore wildcard
 ```
 
 ### Set Timezone
-```sh
+```
 ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 ```
 
 ## Updates
 
 ### Install portmaster
-```sh
+```
 cd /usr/ports/ports-mgmt/portmaster && \
 make install clean
 ```
 
 ### Install FreeBSD Ports Collection
-```sh
+```
 portsnap fetch extract
 ```
 
 ### Upgrade FreeBSD Ports Collection
-```sh
+```
 portsnap fetch update
 ```
 
 ### Fetch Binary Updates
-```sh
+```
 freebsd-update fetch install
 ```
 
 ### Update FreeBSD from Source
 For a new release:
-```sh
+```
 mv /usr/src /usr/src.bak
 svn checkout https://svn.freebsd.org/base/releng/11.1 /usr/src
 ```
 
 Always:
-```sh
+```
 svn update /usr/src
 less /usr/src/UPDATING
 cd /usr/src
@@ -479,29 +479,29 @@ shutdown -r now
 ### Update Bootcode After ZFS Pool Feature Update
 This is the most likely reason your zroot-based system will not boot after 
 updating ZFS feature flags.
-```sh
+```
 gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 da0
 ```
 
 ### Create Pool from Image
-```sh
+```
 zpool create tank /path/to/filesystem.img
 ```
 
 ### Mount Pool from Image
-```sh
+```
 zpool import -d /path/to/folder/containing/filesystem.img tank
 ```
 
 ### Mount Pool with Different Root
 Useful for untrusted pools or ones that mount to system directories.
-```sh
+```
 zpool import -f -R /mnt pool
 ```
 
 ### Replace Failed ZFS-on-Root Disk
 Usually those are mirrors, which is what those instructions are for. The assumed failed disk is `ada1`. Swap size could differ, check that before this action with `gpart show`.
-```sh
+```
 zpool offline <FAILED_DISK>
 zpool detach <FAILED_DISK>
 # ...physically swap defective disk for a working disk...
@@ -514,7 +514,7 @@ gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 ada1
 
 ### Rescue ZFS-on-Root System
 This comes in handy on `unable to remount devfs under dev` errors, for example. Reboot machine from USB/CD/network image. Select "Live System", then:
-```sh
+```
 mkdir /tmp/mnt
 zpool import -f -R /tmp/mnt zroot
 zfs mount zroot/ROOT/default
@@ -526,6 +526,6 @@ reboot
 ```
 
 ### Remount Read-Only Root ZFS Pool as Read-Write
-```sh
+```
 zfs set readonly=off zroot
 ```

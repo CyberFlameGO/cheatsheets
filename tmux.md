@@ -4,19 +4,19 @@
 
 ## Session Control (Command Line)
 
-------------------------------------------- | -------------------------
-`tmux`                                      | Start a new session
-`tmux new -s <session-name>`                | Start a new session with the name chosen
-`tmux ls`                                   | List all sessions
-`tmux attach -t <target-session>`           | Re-attach a detached session
-`tmux attach -d -t <target-session>`        | Re-attach a detached session (and detach it from elsewhere)
-`tmux kill-session -t <target-session>`     | Delete session
+----------------------------------------| -----------------------------------------------------------
+`tmux`                                  | Start a new session
+`tmux new -s <session-name>`            | Start a new session with the name chosen
+`tmux ls`                               | List all sessions
+`tmux attach -t <target-session>`       | Re-attach a detached session
+`tmux attach -d -t <target-session>`    | Re-attach a detached session (and detach it from elsewhere)
+`tmux kill-session -t <target-session>` | Delete session
 
 ## Shortcuts
 
 ### Pane Control
 
-------------------------------------------- | -------------------------
+--------------- | ---------------------------------------
 `Ctrl+b "`      | Split pane horizontally
 `Ctrl+b %`      | Split pane vertically
 `Ctrl+b o`      | Next pane
@@ -38,7 +38,7 @@
 
 ### Window Control
 
-------------------------------------------- | -------------------------
+---------- | ---------------------
 `Ctrl+b c` | Create new window
 `Ctrl+b d` | Detach from session
 `Ctrl+b ,` | Rename current window
@@ -49,7 +49,7 @@
 
 ### Copy-Mode (vi)
 
-------------------------------------------- | -------------------------
+-------------- | -----------------
 `Ctrl+b [`     | Enter copy mode
 `Ctrl+b G`     | Bottom of history
 `Ctrl+b g`     | Top of history
@@ -63,7 +63,7 @@
 
 ### Copy-Mode (Emacs)
 
-------------------------------------------- | -------------------------
+--------------- | ---------------------
 `Ctrl+b [`      | Enter copy mode
 `Ctrl+b M-<`    | Bottom of history
 `Ctrl+b M->`    | Top of history

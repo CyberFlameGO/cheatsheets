@@ -13,14 +13,14 @@
 
 Install:
 
-```bash
+```
 cd /usr/ports/sysutils/munin-node
 make install clean
 ```
 
 Configure:
 
-```bash
+```
 munin-node-configure --shell --families=contrib,auto | sh -x
 sysrc munin_node_enable=YES
 sysrc munin_asyncd_enable=YES
@@ -36,7 +36,7 @@ munin:*:842:842::0:0:Munin:/var/munin:/bin/sh
 
 Change to `munin` user and set up SSH access:
 
-```bash
+```
 su munin
 mkdir /var/munin/.ssh
 vi /var/munin/.ssh/authorized_keys

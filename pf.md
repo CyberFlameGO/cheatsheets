@@ -4,7 +4,7 @@
 
 ## General pfctl Commands
 
-```sh
+```
 # Disable Packet-Filtering
 pfctl -d
 
@@ -20,7 +20,7 @@ pfctl -v
 
 ## Loading pf Rules
 
-```sh
+```
 # Load /etc/pf.conf
 pfctl -f /etc/pf.conf
 
@@ -39,7 +39,7 @@ pfctl -O -f /etc/pf.conf
 
 ## Clearing PF Rules & Counters
 
-```sh
+```
 # Flush All
 pfctl -F all
 
@@ -63,7 +63,7 @@ pfctl -z
 
 ## Output pf Information
 
-```sh
+```
 # Show Filter Information:
 pfctl -s rules
 
@@ -97,7 +97,7 @@ pfctl -s all
 
 ## Maintaining pf Tables
 
-```sh
+```
 # show table addvhosts
 pfctl -t addvhosts -T show
 
@@ -137,7 +137,7 @@ pfctl -t addvhosts -T zero
 
 ## Misc
 
-```sh
+```
 # see live pf log
 tcpdump -n -e -ttt -i pflog0
 

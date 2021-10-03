@@ -6,7 +6,7 @@ The official binary packages for ARMv6 platforms (Raspberry Pi 1/2, etc.) are of
 
 ### Install
 
-```sh
+```
 pkg install subversion qemu-user-static ccache poudriere
 ```
 
@@ -14,7 +14,7 @@ pkg install subversion qemu-user-static ccache poudriere
 
 Change in `/usr/local/etc/poudriere.conf`:
 
-```sh
+```
 ZPOOL=zroot
 ZROOTFS=/poudriere
 FREEBSD_HOST=http://download.FreeBSD.org
@@ -29,7 +29,7 @@ WRKDIR_ARCHIVE_FORMAT=txz
 
 ### Configure QEMU
 
-```sh
+```
 binmiscctl add armv6 \
     --interpreter "/usr/local/bin/qemu-arm-static" \
     --magic "\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00" \
@@ -40,13 +40,13 @@ binmiscctl add armv6 \
 
 ### Create Jail
 
-```sh
+```
 poudriere jail -c -j 11armv6 -m svn -a arm.armv6 -v release/11.0.1
 ```
 
 ### Install Default Ports Tree
 
-```sh
+```
 poudriere ports -c
 ```
 
@@ -62,19 +62,19 @@ www/nginx
 
 ### Provision Package Options (Optional)
 
-```sh
+```
 poudriere options -cf /usr/local/etc/poudriere.d/pkglist.txt
 ```
 
 ### Build
 
-```sh
+```
 poudriere bulk -j 11armv6 -f /usr/local/etc/poudriere.d/pkglist.txt
 ```
 
 ### Create Repository Server
 
-```sh
+```
 pkg install nginx
 sysrc enable_nginx=YES
 ```
@@ -123,13 +123,13 @@ server {
 }
 ```
 
-```sh
+```
 service nginx start
 ```
 
 ### Configure Clients to Use the Repository
 
-```sh
+```
 mkdir -p /usr/local/etc/pkg/repos/
 ```
 
@@ -142,13 +142,13 @@ Poudriere: {
 }
 ```
 
-```sh
+```
 pkg update -f
 ```
 
 ### Update the Poudriere Ports Tree and Build Changes
 
-```sh
+```
 poudriere ports -u
 poudriere bulk -j 11armv6 -f /usr/local/etc/poudriere.d/pkglist.txt
 ```

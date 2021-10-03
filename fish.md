@@ -10,6 +10,6 @@
 
 ### Infinite Loop
 
-```fish
+```
 while true; echo 'Hit CTRL+C'; sleep 1; end
 ```

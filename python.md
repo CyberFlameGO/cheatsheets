@@ -16,7 +16,7 @@
 ## Command-Line Usage
 
 ### Argument Parsing
-```py
+```
 import argparse
 
 parser = argparse.ArgumentParser(description="Something useful.")
@@ -34,7 +34,7 @@ print(args.output)
 ```
 
 ### Colors
-```py
+```
 class colors:
     reset='\033[0m'
     bold='\033[01m'
@@ -73,7 +73,7 @@ print(f"{colors.bold}{colors.fg.green}Success!")
 ```
 
 ### Execute Shell Commands
-```py
+```
 import subprocess
 cmd = subprocess.Popen(
         ['ls', '-l', '.'],
@@ -91,12 +91,12 @@ print(stderr)
 ### TinyDB
 
 #### Install
-```sh
+```
 pip install tinydb
 ```
 
 #### Use
-```py
+```
 from tinydb import TinyDB, Query
 
 db = TinyDB('db.json')
@@ -141,7 +141,7 @@ db = TinyDB(storage=MemoryStorage)
 
 #### Use
 
-```py
+```
 import sqlite3
 
 conn = sqlite3.connect('sqlite.db')
@@ -179,7 +179,7 @@ print(sql_fetch())
 * `a` appends to file, creates it when it does not exist.
 * `w` overwrites file, creates it when it does not exist.
 
-```py
+```
 f = open("file.txt", "a")
 f.write("More content.")
 f.close()
@@ -187,7 +187,7 @@ f.close()
 
 ### Skip First Couple of Lines
 
-```py
+```
 with open('yourfile.txt') as f:
     lines_after_2 = f.readlines()[2:]
 ```
@@ -195,7 +195,7 @@ with open('yourfile.txt') as f:
 ## Iteration
 
 ### Range
-```py
+```
 for i in range(10):
     print(i)
 ```
@@ -203,13 +203,13 @@ for i in range(10):
 ## Lists
 
 ### Deduplicate List
-```py
+```
 for i in mylist:
     if i not in newlist:
         newlist.append(i)
 ```
 
-```py
+```
 from collections import OrderedDict
 newlist = list(OrderedDict.fromkeys(mylist))
 ```
@@ -219,7 +219,7 @@ newlist = list(OrderedDict.fromkeys(mylist))
 ### HTTP
 
 #### JSON
-```py
+```
 import json, urllib.request
 req = urllib.request.Request("https://httpbin.org/get")
 req.add_header("Accept", "application/json")
@@ -233,7 +233,7 @@ except urllib.error.HTTPError as e:
 ```
 
 #### Plain
-```py
+```
 import urllib.request
 req = urllib.request.Request("https://httpbin.org/get")
 try:
@@ -249,13 +249,13 @@ except urllib.error.HTTPError as e:
 
 ### Convert Binary to String
 
-```py
+```
 b'a string'.decode('ascii')
 ```
 
 ## Type Casting
 
-```py
+```
 integer = 42
 string = "42"
 

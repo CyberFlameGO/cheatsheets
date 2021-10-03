@@ -29,7 +29,7 @@ SELECT host, user, password FROM mysql.user;
 
 ## Rename Tables
 Run this on the shell.
-```bash
+```
 for table in `mysql -u root -s -N -e "show tables from <OLD_DATABASE>"`; do
     mysql -u root -s -N -e "rename table <OLD_DATABASE>.$table to <NEW_DATABASE>.$table";
 done;

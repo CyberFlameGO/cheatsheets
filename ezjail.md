@@ -58,7 +58,7 @@ problem when you're running into the following error message:
 Instead of just using the environment variable `ALLOW_UNSUPPORTED_SYSTEM`, find 
 out what version of FreeeBSD you have running *inside of* the basejail:
 
-```sh
+```
 grep FreeBSD_version /usr/include/sys/param.h
 ```
 
@@ -79,18 +79,18 @@ jail than the host version.
 
 To do so, run the following:
 
-```sh
+```
 ezjail-admin update -U -s 11.1-RELEASE
 ```
 
 Afterwards, restart all jails for good measure:
 
-```sh
+```
 ezjail-admin restart
 ```
 
 ### Disable Obsolete Warning
 > /etc/rc.d/jail: WARNING: Per-jail configuration via jail_* variables  is obsolete.  Please consider migrating to /etc/jail.conf.
-```sh
+```
 sysrc jail_confwarn="NO"
 ```

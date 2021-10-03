@@ -4,7 +4,7 @@
 
 ## Installation in FreeBSD Jail
 
-```sh
+```
 ezjail create postgres 'lo0|192.168.0.10'
 ezjail console -f postgres
 pkg update
@@ -38,13 +38,13 @@ Command        | Action
 
 ### Create New Database
 
-```sh
+```
 createdb dbname
 ```
 
 ### Remove Database
 
-```sh
+```
 dropdb dbname
 ```
 

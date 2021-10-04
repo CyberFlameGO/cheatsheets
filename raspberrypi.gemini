@@ -1,13 +1,12 @@
 # Raspberry Pi Cheatsheet
 
-> Small and dangerous.
-
 ## Table of Contents
 
-- [Display Rotation](#display-rotation)
-- [Headless Setup](#headless-setup)
+* Display Rotation
+* Headless Setup
 
 ## Display Rotation
+
 ```
 # /boot/config.txt
 
@@ -18,7 +17,9 @@ display_rotate=3 # 270 degrees
 ```
 
 ## Headless Setup
-Enable SSH by placing a file named `ssh` onto the boot partition of the SD card.
+
+Enable SSH by placing a file named "ssh" onto the boot partition of the SD card.
+
 ```
 touch /path/to/sd/card/volume/ssh
 ```

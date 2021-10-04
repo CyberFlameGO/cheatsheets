@@ -1,8 +1,6 @@
 # pf Cheatsheet
 
-> Forget iptables. Really.
-
-## General pfctl Commands
+## General Commands
 
 ```
 # Disable Packet-Filtering
@@ -18,7 +16,7 @@ pfctl -q
 pfctl -v
 ```
 
-## Loading pf Rules
+## Loading Rules
 
 ```
 # Load /etc/pf.conf
@@ -37,7 +35,7 @@ pfctl -N -f /etc/pf.conf
 pfctl -O -f /etc/pf.conf
 ```
 
-## Clearing PF Rules & Counters
+## Clearing Rules & Counters
 
 ```
 # Flush All
@@ -58,10 +56,10 @@ pfctl -F info
 # Clear all Counters
 pfctl -z
 
-### Note: flushing rules do not touch any existing stateful connections
+# Note: flushing rules do not touch any existing stateful connections
 ```
 
-## Output pf Information
+## Output Information
 
 ```
 # Show Filter Information:
@@ -95,7 +93,7 @@ pfctl -s info
 pfctl -s all
 ```
 
-## Maintaining pf Tables
+## Maintaining Tables
 
 ```
 # show table addvhosts

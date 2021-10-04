@@ -1,6 +1,10 @@
 # Poudriere ARMv6 Cross-Building Package Server How-to
 
-The official binary packages for ARMv6 platforms (Raspberry Pi 1/2, etc.) are often out of date and some packages are not available at all. What's more, some packages refuse to compile without the system sources or won't compile at all. Here's how to supply your machines with fresh packages, configured to your needs.
+The official binary packages for ARMv6 platforms (Raspberry Pi 1/2, etc.) are
+often out of date and some packages are not available at all. What's more, some
+packages refuse to compile without the system sources or won't compile at all.
+Here's how to supply your machines with fresh packages, configured to your
+needs.
 
 ## The Long Way
 
@@ -52,9 +56,9 @@ poudriere ports -c
 
 ### Create Package List
 
-`/usr/local/etc/poudriere.d/pkglist.txt`:
-
 ```
+# /usr/local/etc/poudriere.d/pkglist.txt
+
 sysutils/ezjail
 www/nginx
 [...]
@@ -79,9 +83,9 @@ pkg install nginx
 sysrc enable_nginx=YES
 ```
 
-Add to `/usr/local/etc/nginx/nginx.conf`:
+```
+# /usr/local/etc/nginx/nginx.conf
 
-```nginx
 server {
     listen       1.2.3.4:80;
     server_name  pkg.example.com;
@@ -133,9 +137,9 @@ service nginx start
 mkdir -p /usr/local/etc/pkg/repos/
 ```
 
-`/usr/local/etc/pkg/repos/Poudriere.conf`:
-
 ```
+# /usr/local/etc/pkg/repos/Poudriere.conf
+
 Poudriere: {
     url: "http://pkg.example.com/repo/11armv6-default",
     enabled: yes,
@@ -155,8 +159,8 @@ poudriere bulk -j 11armv6 -f /usr/local/etc/poudriere.d/pkglist.txt
 
 ## References
 
-- <https://www.freebsd.org/doc/handbook/ports-poudriere.html>
-- <https://www.dvatp.com/tech/armv6_freebsd_poudriere>
-- <https://www.bsdnow.tv/tutorials/poudriere>
-- <https://github.com/freebsd/poudriere/wiki/pkg_repos>
-- <https://www.freebsd.org/cgi/man.cgi?query=binmiscctl&manpath=FreeBSD+11.0-RELEASE+and+Ports>
+=> https://www.freebsd.org/doc/handbook/ports-poudriere.html
+=> https://www.dvatp.com/tech/armv6_freebsd_poudriere
+=> https://www.bsdnow.tv/tutorials/poudriere
+=> https://github.com/freebsd/poudriere/wiki/pkg_repos
+=> https://www.freebsd.org/cgi/man.cgi?query=binmiscctl&manpath=FreeBSD+11.0-RELEASE+and+Ports

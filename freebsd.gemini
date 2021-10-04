@@ -1,30 +1,29 @@
 # FreeBSD Cheatsheet
 
-> The handbook is great, but this is the short one.
-
 ## Table of Contents
 
-- [Boot](#boot)
-- [File Management](#file-management)
-- [File Systems](#file-systems)
-- [Firewall](#firewall)
-- [Hardware](#hardware)
-- [Jails](#jails)
-- [Kernel](#kernel)
-- [Networking](#networking)
-- [Permissions](#permissions)
-- [pkgng](#pkgng)
-- [Ports](#ports)
-- [rc.d](#rcd)
-- [Shell](#shell)
-- [Software](#software)
-- [Time](#time)
-- [Updates](#updates)
-- [ZFS](#zfs)
+* Boot
+* File Management
+* File Systems
+* Firewall
+* Hardware
+* Jails
+* Kernel
+* Networking
+* Permissions
+* pkgng
+* Ports
+* rc.d
+* Shell
+* Software
+* Time
+* Updates
+* ZFS
 
 ## Boot
 
 ### Reduce Boot-Time Delay
+
 ```
 # /boot/loader.conf
 
@@ -35,6 +34,7 @@ beastie_disable="YES"
 ## File Management
 
 ### tar
+
 ```
 tar -zcv --exclude='folder' -f theOutputTarFile.tar folderToTar
 ```
@@ -42,17 +42,21 @@ tar -zcv --exclude='folder' -f theOutputTarFile.tar folderToTar
 ## File Systems
 
 ### Create Sparse Image
-`seek` specifies the size.
+
+"seek" specifies the size.
+
 ```
 dd if=/dev/zero of=filesystem.img bs=1 seek=100G count=1
 ```
 
 ### Grow Sparse Image
+
 ```
 dd if=/dev/zero of=filesystem.img bs=1 seek=200G count=1
 ```
 
 ### Create File System in Image
+
 ```
 mdconfig filesystem.img
 newfs -U /dev/md0
@@ -60,6 +64,7 @@ mount /dev/md0 /path/to/local/mnt
 ```
 
 ### Resize File System in Image
+
 ```
 umount /dev/md0
 mdconfig -d -u md0
@@ -70,6 +75,7 @@ mount /dev/md0 /path/to/local/mnt
 ```
 
 ### Mount/Unmount ISO File
+
 ```
 ## Mount
 mkdir /media/cdrom
@@ -82,6 +88,7 @@ mdconfig -d -u md0
 ```
 
 ### Mount Linux EXT4 in LVM2
+
 ```
 kldload /boot/kernel/geom_linux_lvm.ko
 pkg install fusefs-ext4fuse
@@ -91,6 +98,7 @@ ext4fuse /dev/linux_lvm/volumegroup-logicalvolume /mnt
 ## Firewall
 
 ### Minimal Configuration
+
 ```
 ext_if = "vtnet0"
 tcp_pass = "{ ssh }"
@@ -116,6 +124,7 @@ pass in quick proto icmp6 all
 ## Hardware
 
 ### Get Harddisk Information
+
 ```
 camcontrol identify ada0
 ```
@@ -123,6 +132,7 @@ camcontrol identify ada0
 ## Jails
 
 ### Completely Remove Jail Folders
+
 ```
 chflags -R noschg /usr/jails && \
 rm -rf /usr/jails
@@ -131,7 +141,9 @@ rm -rf /usr/jails
 ## Kernel
 
 ### Determining the Version of FreeBSD
+
 In ascending level of obscurity, helpful when dealing with appliances based on FreeBSD.
+
 ```
 freebsd-version
 ```
@@ -149,6 +161,7 @@ objdump -sj .data /boot/kernel/kernel | tail -n 22
 ```
 
 ### Install Kernel and System Sources
+
 ```
 svnlite checkout https://svn.freebsd.org/base/releng/12.2 /usr/src
 ```
@@ -156,6 +169,7 @@ svnlite checkout https://svn.freebsd.org/base/releng/12.2 /usr/src
 ## Networking
 
 ### Add Network Alias
+
 ```
 # IPv4
 ifconfig vtnet0 alias 10.80.0.67/32
@@ -163,6 +177,7 @@ ifconfig vtnet0 alias 10.80.0.67/32
 # IPv6
 ifconfig vtnet0 inet6 2610:1c1:0:4::3 prefixlen 64 alias
 ```
+
 ```
 # /etc/rc.conf
 
@@ -171,40 +186,48 @@ ifconfig_em0_alias1="inet6 2610:1c1:0:4::3 prefixlen 64"
 ```
 
 ### Check for Listening Ports
+
 ```
 sockstat -46l | grep -E -e "\*:[[:digit:]]"
 ```
 
 ### Prevent resolv.conf from Being Overwritten
+
 ```
 chflags schg /etc/resolv.conf
 ```
 
 ### Restart Network Service over SSH
+
 ```
 /etc/rc.d/netif restart && /etc/rc.d/routing restart
 ```
 
 ### Mount Samba Share
+
 ```
 mount_smbfs -I 10.20.30.40 //username@server/share /path/to/local/mnt
 ```
 
 ### Mount Samba Share with Credentials
+
 ```
 # ~/.nsmbrc
 
 [SERVER:USERNAME]
 password=password
 ```
+
 ```
 mount_smbfs -N -I 10.20.30.40 //username@server/share /path/to/local/mnt
 ```
 
 ### Set Default Route
+
 ```
 route add default 10.20.30.1
 ```
+
 ```
 # /etc/rc.conf
 
@@ -212,31 +235,46 @@ defaultrouter="10.20.30.1"
 ```
 
 Confirm:
+
 ```
 netstat -r
 ```
 
-Command | Purpose
-------- | -------
-U	      | The route is active (up).
-H	      | The route destination is a single host.
-G	      | Send anything for this destination on to this gateway, which will figure out from there where to send it.
-S	      | This route was statically configured.
-C	      | Clones a new route based upon this route for machines to connect to. This type of route is normally used for local networks.
-W	      | The route was auto-configured based upon a local area network (clone) route.
-L	      | Route involves references to Ethernet (link) hardware.
+```table
++---------+--------------------------------------------------------------------+
+| Command |                              Purpose                               |
++=========+====================================================================+
+| U       | The route is active (up).                                          |
++---------+--------------------------------------------------------------------+
+| H       | The route destination is a single host.                            |
++---------+--------------------------------------------------------------------+
+| G       | Send anything for this destination on to this gateway, which will  |
+|         | figure out from there where to send it.                            |
++---------+--------------------------------------------------------------------+
+| S       | This route was statically configured.                              |
++---------+--------------------------------------------------------------------+
+| C       | Clones a new route based upon this route for machines to connect   |
+|         | to. This type of route is normally used for local networks.        |
++---------+--------------------------------------------------------------------+
+| W       | The route was auto-configured based upon a local area network      |
+|         | (clone) route.                                                     |
++---------+--------------------------------------------------------------------+
+| L       | Route involves references to Ethernet (link) hardware.             |
++---------+--------------------------------------------------------------------+
+```
 
-#### Set Static IP Address for Interface
+### Set Static IP Address for Interface
+
 ```
 # /etc/rc.conf
 
 hostname="freebsd.example.com"
 
-### IPv4
+## IPv4
 ifconfig_em0="inet 192.168.0.6 netmask 255.255.255.0"
 defaultrouter="192.168.0.254"
 
-### IPv6 (multiple aliases possible)
+## IPv6 (multiple aliases possible)
 ifconfig_em0_ipv6="inet6 2a03:4000:36:3f8::1/64"
 ipv6_defaultrouter="fe80::1%em0"
 ```
@@ -244,6 +282,7 @@ ipv6_defaultrouter="fe80::1%em0"
 ## Permissions
 
 ### Make File Undeleteable, Even by Root
+
 ```
 ## Enable
 chflags schg /path/to/file
@@ -255,7 +294,9 @@ chflags noschg /path/to/file
 ## pkgng
 
 ### Fix Corrupt SQLite Database
+
 Fixes "sqlite error while executing INSERT OR ROLLBACK INTO pkg_search".
+
 ```
 pkg info -ao > pkglist.txt
 rm /var/db/pkg/local.sqlite
@@ -264,11 +305,13 @@ pkg install `cat pkglist.txt`
 ```
 
 ### List All Installed Ports
+
 ```
 pkg query --all '%o'
 ```
 
 ### List Manually Installed Ports
+
 ```
 pkg query -e '%a = 0' %o
 ```
@@ -276,9 +319,11 @@ pkg query -e '%a = 0' %o
 ## Ports
 
 ### Dump All Set Options
-Prints out all previously set options in `make.conf` compatible format. Enables
+
+Prints out all previously set options in "make.conf" compatible format. Enables
 creating pre-configured builds. Obviously only set the ones you absolutely
 require, otherwise it will easily break on changes.
+
 ```
 # process.sh
 
@@ -328,11 +373,13 @@ load_rc_config $name
 run_rc_command "$1"
 ```
 
-Remember to create the `fooapp` user, the `pidfile` path and apply user permissions to it.
+Remember to create the "fooapp" user, the "pidfile" path and apply user
+permissions to it.
 
 ## Shell
 
 ### Clear csh History and Logout
+
 ```
 echo > ~/.history && history -c && exit
 ```
@@ -340,6 +387,7 @@ echo > ~/.history && history -c && exit
 ## Software
 
 ### List Installed Ports/Packages
+
 ```
 pkg query --all '%o %n-%v %R'
 ```
@@ -371,7 +419,9 @@ pkg update
 ```
 
 ### Setup ccache
+
 2 GB tmpfs
+
 ```
 portmaster devel/ccache
 mkdir /ram
@@ -380,6 +430,7 @@ mount /ram
 ```
 
 ### Basic make.conf for Headless Servers
+
 ```
 ## ccache
 WRKDIRPREFIX=/ram
@@ -406,7 +457,9 @@ DEFAULT_VERSIONS+=ssl=openssl
 ## Time
 
 ### Force Update Date and Time
+
 If `ntpd` is installed:
+
 ```
 service ntpd stop
 ntpd -q -g
@@ -414,11 +467,13 @@ service ntpd start
 ```
 
 With base `ntp`:
+
 ```
 ntpdate -v -b in.pool.ntp.org
 ```
 
 ### Stop Listening on any Interface
+
 ```
 # /etc/ntp.conf
 
@@ -426,6 +481,7 @@ interface ignore wildcard
 ```
 
 ### Set Timezone
+
 ```
 ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 ```
@@ -433,34 +489,41 @@ ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 ## Updates
 
 ### Install portmaster
+
 ```
 cd /usr/ports/ports-mgmt/portmaster && \
 make install clean
 ```
 
 ### Install FreeBSD Ports Collection
+
 ```
 portsnap fetch extract
 ```
 
 ### Upgrade FreeBSD Ports Collection
+
 ```
 portsnap fetch update
 ```
 
 ### Fetch Binary Updates
+
 ```
 freebsd-update fetch install
 ```
 
 ### Update FreeBSD from Source
+
 For a new release:
+
 ```
 mv /usr/src /usr/src.bak
 svn checkout https://svn.freebsd.org/base/releng/11.1 /usr/src
 ```
 
 Always:
+
 ```
 svn update /usr/src
 less /usr/src/UPDATING
@@ -477,30 +540,40 @@ shutdown -r now
 ## ZFS
 
 ### Update Bootcode After ZFS Pool Feature Update
-This is the most likely reason your zroot-based system will not boot after 
+
+This is the most likely reason your zroot-based system will not boot after
 updating ZFS feature flags.
+
 ```
 gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 da0
 ```
 
 ### Create Pool from Image
+
 ```
 zpool create tank /path/to/filesystem.img
 ```
 
 ### Mount Pool from Image
+
 ```
 zpool import -d /path/to/folder/containing/filesystem.img tank
 ```
 
 ### Mount Pool with Different Root
+
 Useful for untrusted pools or ones that mount to system directories.
+
 ```
 zpool import -f -R /mnt pool
 ```
 
 ### Replace Failed ZFS-on-Root Disk
-Usually those are mirrors, which is what those instructions are for. The assumed failed disk is `ada1`. Swap size could differ, check that before this action with `gpart show`.
+
+Usually those are mirrors, which is what those instructions are for. The
+assumed failed disk is "ada1". Swap size could differ, check that before this
+action with "gpart show".
+
 ```
 zpool offline <FAILED_DISK>
 zpool detach <FAILED_DISK>
@@ -513,7 +586,10 @@ gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 ada1
 ```
 
 ### Rescue ZFS-on-Root System
-This comes in handy on `unable to remount devfs under dev` errors, for example. Reboot machine from USB/CD/network image. Select "Live System", then:
+
+This comes in handy on "unable to remount devfs under dev" errors, for example.
+Reboot machine from USB/CD/network image. Select "Live System", then:
+
 ```
 mkdir /tmp/mnt
 zpool import -f -R /tmp/mnt zroot
@@ -526,6 +602,7 @@ reboot
 ```
 
 ### Remount Read-Only Root ZFS Pool as Read-Write
+
 ```
 zfs set readonly=off zroot
 ```

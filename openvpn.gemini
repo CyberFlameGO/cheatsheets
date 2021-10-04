@@ -1,18 +1,18 @@
 # OpenVPN Cheatsheet
 
-> VPN for smart people.
-
 ## Install and Configure on FreeBSD 11
 
 ### Load Kernel Module
 
 Load into active session:
+
 ```
 kldload if_tun
 ```
 
 To load again on boot, add to `/boot/loader.conf`:
-```conf
+
+```
 if_tun_load="YES"
 ```
 

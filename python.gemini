@@ -1,21 +1,20 @@
 # Python Cheatsheet
 
-> And now for something completely different.
-
 ## Table of Contents
 
-- [Command-Line Usage](#command-line-usage)
-- [Databases](#databases)
-- [File Operations](#file-operations)
-- [Iteration](#iteration)
-- [Lists](#lists)
-- [Network Connections](#network-connections)
-- [Text Operations](#text-operations)
-- [Type Casting](#type-casting)
+* Command-Line Usage
+* Databases
+* File Operations
+* Iteration
+* Lists
+* Network Connections
+* Text Operations
+* Type Casting
 
 ## Command-Line Usage
 
 ### Argument Parsing
+
 ```
 import argparse
 
@@ -34,6 +33,7 @@ print(args.output)
 ```
 
 ### Colors
+
 ```
 class colors:
     reset='\033[0m'
@@ -73,6 +73,7 @@ print(f"{colors.bold}{colors.fg.green}Success!")
 ```
 
 ### Execute Shell Commands
+
 ```
 import subprocess
 cmd = subprocess.Popen(
@@ -91,11 +92,13 @@ print(stderr)
 ### TinyDB
 
 #### Install
+
 ```
 pip install tinydb
 ```
 
 #### Use
+
 ```
 from tinydb import TinyDB, Query
 
@@ -113,7 +116,7 @@ db.all()
 Magazine = Query()
 db.search(Magazine.type == 'OSFY')
 # => [{'count': 700, 'type': 'OSFY'}]
- 
+
 db.search(Magazine.count > 750)
 # => [{'count': 800, 'type': 'EFY'}]
 
@@ -195,6 +198,7 @@ with open('yourfile.txt') as f:
 ## Iteration
 
 ### Range
+
 ```
 for i in range(10):
     print(i)
@@ -203,6 +207,7 @@ for i in range(10):
 ## Lists
 
 ### Deduplicate List
+
 ```
 for i in mylist:
     if i not in newlist:
@@ -219,6 +224,7 @@ newlist = list(OrderedDict.fromkeys(mylist))
 ### HTTP
 
 #### JSON
+
 ```
 import json, urllib.request
 req = urllib.request.Request("https://httpbin.org/get")
@@ -229,10 +235,11 @@ try:
     print(json.dumps(data))
 except urllib.error.HTTPError as e:
     print(e.code)
-    print(e.read())  
+    print(e.read())
 ```
 
 #### Plain
+
 ```
 import urllib.request
 req = urllib.request.Request("https://httpbin.org/get")
@@ -242,7 +249,7 @@ try:
     print(data)
 except urllib.error.HTTPError as e:
     print(e.code)
-    print(e.read())  
+    print(e.read())
 ```
 
 ## Text Operations

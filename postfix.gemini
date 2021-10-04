@@ -1,17 +1,17 @@
 # Postfix Cheatsheet
 
-> Concise email management.
-
 ## Table of Contents
 
-- [Configuration Options](#configuration-options)
-- [Inspecting Email Queue](#inspecting-email-queue)
-- [Spam Blocking](#spam-blocking)
+* Configuration Options
+* Inspecting Email Queue
+* Spam Blocking
 
 ## Configuration Options
 
 ### Message Size
+
 This example limits to ~ 25 MB. Attachments are ~ 30% bigger than displayed.
+
 ```
 # /etc/postfix/main.cf
 
@@ -21,21 +21,25 @@ message_size_limit = 25600000
 ## Inspecting Email Queue
 
 ### Display Queue
+
 ```
 postqueue -p
 ```
 
 ### View Message
+
 ```
 postcat -vq <QUEUE_ID>
 ```
 
 ### Flush Queue
+
 ```
 postqueue -f
 ```
 
 ### Delete Messages from Queue
+
 ```
 ## All Mail
 postsuper -d ALL
@@ -50,6 +54,7 @@ mailq | tail +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($8 == "email@ad
 ## Spam Blocking
 
 ### Whitelisting
+
 ```
 # /etc/postfix/rbl_override
 

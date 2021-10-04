@@ -1,15 +1,14 @@
 # OpenSSH Cheatsheet
 
-> The secure shell.
-
 ## Table of Contents
 
-- [Configuration](#ssh-configuration)
-- [Key Management](#key-management)
+* Configuration
+* Key Management
 
 ## Configuration
 
 ### Multiple SSH Hops
+
 ```
 # ~/.ssh/config
 
@@ -24,6 +23,7 @@ Host server
 ```
 
 ### Restrict SSH User Access
+
 ```
 # ~/.ssh/authorized_keys
 
@@ -33,11 +33,13 @@ from="10.20.30.0/24,44.55.66.77",no-agent-forwarding,no-port-forwarding,no-X11-f
 ## Key Management
 
 ### Create Secure SSH Key
+
 ```
 ssh-keygen -o -a 100 -t ed25519
 ```
 
 ### Add Key to Remote Server
+
 ```
 ssh-copy-id -i ~/.ssh/id_ed25519.pub username@remote
 ```

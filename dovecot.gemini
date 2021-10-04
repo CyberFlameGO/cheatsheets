@@ -1,12 +1,6 @@
 # Dovecot Cheatsheet
 
-> The email server.
-
-## Table of Contents
-
-* [Import from Existing Mailstore](#import-from-existing-mailstore)
-
-### Import from Existing Mailstore
+## Import from Existing Mailstore
 
 Run this for all users and the emails will get imported and indexed properly.
 

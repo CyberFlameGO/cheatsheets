@@ -1,7 +1,5 @@
 # fail2ban Cheatsheet
 
-> On the streets, saving the server from the forces of evil.
-
 ## FreeBSD
 
 ### Config
@@ -31,8 +29,8 @@ privnets = "{ 127.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12, 10.0.0.0/8 }"
 
 set loginterface $ext_if
 
-# Normalizes packets and masks the OS's shortcomings such as SYN/FIN packets 
-# [scrub reassemble tcp](BID 10183) and sequence number approximation 
+# Normalizes packets and masks the OS's shortcomings such as SYN/FIN packets
+# [scrub reassemble tcp](BID 10183) and sequence number approximation
 # bugs (BID 7487).
 scrub in on $ext_if no-df random-id
 
@@ -60,7 +58,7 @@ filter = bsd-sshd
 logpath = /var/log/auth.log
 findtime = 600
 maxretry = 3
-bantime  = 86400
+bantime = 86400
 ```
 
 ### Show Banned IPs
@@ -77,8 +75,8 @@ pfctl -a "f2b/ssh-pf" -t f2b-ssh-pf -Ts
 # Show banned IPs in PF's 'fail2ban' table.
 
 for i in `cat /usr/local/etc/fail2ban/jail.d/*.conf | grep -- -pf | sed 's/\[//' | sed 's/\]//'`; do
-        echo ${i}
-        pfctl -a "f2b/${i}" -t f2b-${i} -Ts
+    echo ${i}
+    pfctl -a "f2b/${i}" -t f2b-${i} -Ts
 done
 
 exit 0

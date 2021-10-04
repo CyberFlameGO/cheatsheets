@@ -1,11 +1,8 @@
 # Munin Cheatsheet
 
-> Lightweight monitoring.
-
 ## Table of Contents
 
-- [Node](#node)
-- [Server](#server)
+* Node
 
 ## Node
 
@@ -28,13 +25,14 @@ service munin-node start
 service munin-asyncd start
 ```
 
-Run `vipw` and change the shell of the `munin` user from `/usr/sbin/nologin` to `/bin/sh`:
+Run "vipw" and change the shell of the "munin" user from "/usr/sbin/nologin" to
+"/bin/sh":
 
 ```
 munin:*:842:842::0:0:Munin:/var/munin:/bin/sh
 ```
 
-Change to `munin` user and set up SSH access:
+Change to "munin" user and set up SSH access:
 
 ```
 su munin

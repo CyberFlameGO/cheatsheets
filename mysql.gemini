@@ -1,34 +1,39 @@
 # MySQL Cheatsheet
 
-> Archaic command reference.
-
 ## Create Database
+
 ``` sql
 CREATE DATABASE foobar;
 ```
 
 ## Create New User
-``` sql
+
+```
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'foobar';
 ```
 
 ## Change User Password
-``` sql
+
+```
 SET PASSWORD FOR 'user'@'localhost' = PASSWORD('foobar'); FLUSH PRIVILEGES;
 ```
 
 ## List Databases
-``` sql
+
+```
 SHOW DATABASES;
 ```
 
 ## List Users
-``` sql
+
+```
 SELECT host, user, password FROM mysql.user;
 ```
 
 ## Rename Tables
+
 Run this on the shell.
+
 ```
 for table in `mysql -u root -s -N -e "show tables from <OLD_DATABASE>"`; do
     mysql -u root -s -N -e "rename table <OLD_DATABASE>.$table to <NEW_DATABASE>.$table";
@@ -36,13 +41,16 @@ done;
 ```
 
 ## Set User Privileges
-``` sql
+
+```
 GRANT ALL PRIVILEGES ON foobar.* TO 'user'@'localhost'; FLUSH PRIVILEGES;
 ```
 
 ## Good Default Config
+
 MariaDB 10 on FreeBSD.
-``` ini
+
+```
 [mysql]
 
 # CLIENT #
@@ -106,4 +114,4 @@ slow-query-log-file            = /var/db/mysql/mysql-slow.log
 
 ## Optimizing
 
-- [MySQLTuner](https://github.com/major/MySQLTuner-perl)
+=> https://github.com/major/MySQLTuner-perl MySQLTuner
